@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".signup.SignUpActivity">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/signUpSwipe"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/sign_up_new" />
+
+    <RelativeLayout
+        android:id="@+id/rlSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_above="@+id/btnSignUp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvEmailSignUp"
+            style="@style/LoginTextInputOuterFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="16dp"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxStrokeColor="@color/yellow"
+            app:helperText=""
+            app:helperTextTextColor="@android:color/holo_red_light"
+            app:hintTextColor="@color/yellow">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailEt"
+                style="@style/LoginTextInputInnerFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/type_your_email"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvPasswordSignUp"
+            style="@style/LoginTextInputOuterFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvEmailSignUp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="16dp"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxStrokeColor="@color/yellow"
+            app:counterEnabled="true"
+            app:counterMaxLength="16"
+            app:helperText=""
+            app:helperTextTextColor="@android:color/holo_red_light"
+            app:hintTextColor="@color/yellow"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passET"
+                style="@style/LoginTextInputInnerFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/set_your_password"
+                android:inputType="textPassword"
+                android:maxLength="16" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvConfirmPasswordSignUp"
+            style="@style/LoginTextInputOuterFieldStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvPasswordSignUp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="1dp"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxStrokeColor="@color/yellow"
+            app:counterEnabled="true"
+            app:counterMaxLength="16"
+            app:helperText=""
+            app:helperTextTextColor="@android:color/holo_red_light"
+            app:hintTextColor="@color/yellow"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passConfirmET"
+                style="@style/LoginTextInputInnerFieldStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/confirm_your_password"
+                android:inputType="textPassword"
+                android:maxLength="16" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rlTerms"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/border"
+        android:fontFamily="sans-serif-medium"
+        android:paddingHorizontal="40dp"
+        android:text="@string/btn_sign_up"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/rlTerms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/tvByClick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/by_click"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvByClick"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="3dp"
+            android:text="@string/terms_and_conditions"
+            android:textColor="@color/yellow"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

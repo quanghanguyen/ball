@@ -1,0 +1,124 @@
+<resources>
+    <string name="app_name">Match Ball</string>
+    <string name="sign_up"><u>Sign-up</u></string>
+    <string name="type_your_password">Type Your Password</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="not_registered_yet">Not Registered Yet?</string>
+    <string name="type_your_email">Type your Email</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_in_underline"><u>Sign In</u></string>
+    <string name="set_your_password">Set your Password</string>
+    <string name="confirm_your_password">Confirm your Password</string>
+    <string name="btn_sign_up">Sign Up</string>
+    <string name="or_sign_up_with">Or Sign-up with</string>
+    <string name="by_click">By clicking Sign-up, you agree to our</string>
+    <string name="terms_and_conditions">Terms and Conditions</string>
+
+    <string name="pass_not_match">Password is not matching!</string>
+    <string name="empty_fields">Empty Fields Are Not Allowed!</string>
+    <string name="sign_up_fail">Sign-Up Fail</string>
+    <string name="sign_in_fail">Sign-In Fail</string>
+    <string name="sign_up_success">Sign-Up Success</string>
+    <string name="sign_in_success">Sign-In Success</string>
+    <string name="it_s_easier_to_sign_up_now">It\'s easier to Sign Up now</string>
+    <string name="i_ll_use_email_or_phone">I\'ll use email or phone</string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="already_have_account">Already have account?</string>
+
+
+    <string name="facebook_app_id">1234</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">56789</string>
+    <string name="invalid_email">Invalid Email</string>
+    <string name="pass_cannot_empty">Password cannot empty</string>
+    <string name="list">List</string>
+    <string name="person">User</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="team_name">Team Name:</string>
+    <string name="bio">Bio</string>
+    <string name="sign_out">Sign out</string>
+    <string name="email">Email</string>
+    <string name="save">Save</string>
+    <string name="enter_bio">Enter Bio</string>
+    <string name="blank">Blank</string>
+    <string name="your_match_request">Your Match Request</string>
+    <string name="time">Time:</string>
+    <string name="pitch">Pitch:</string>
+    <string name="amount_of_people">Amount of people:</string>
+    <string name="send">Send</string>
+    <string name="select">Select</string>
+    <string name="note">Note:</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="search_location">Search Location</string>
+    <string name="search">Search</string>
+    <string name="done">Done</string>
+    <string name="amount">Amount:</string>
+    <string name="join_match">Join Match</string>
+    <string name="join">Join</string>
+    <string name="team_name_join"><u>Team Name Join</u></string>
+    <string name="title_activity_join_maps">JoinMapsActivity</string>
+    <string name="your_request">Your Request</string>
+    <string name="setting">Setting</string>
+    <string name="request_list">Request List</string>
+    <string name="your_request_match">Your Request Match</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="title_activity_edit_maps">EditMapsActivity</string>
+    <string name="edit_your_request">Edit Your Request</string>
+    <string name="phone">Phone:</string>
+    <string name="unnamed">Unnamed</string>
+    <string name="personal_information">PERSONAL INFORMATION</string>
+    <string name="no_phone_number_yet">No phone number</string>
+    <string name="no_date_of_birth">No date of birth</string>
+    <string name="no_bio">No Bio</string>
+    <string name="requests_manager">REQUESTS MANAGER</string>
+    <string name="edit_your_requests">Edit your Requests</string>
+    <string name="settings">SETTINGS</string>
+    <string name="account_information">Account Information</string>
+    <string name="change_your_password">Change Your Password</string>
+    <string name="your_account">Your Account</string>
+    <string name="hint_team_name">Team Name</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_phone">Phone</string>
+    <string name="hint_birthday">Birthday</string>
+    <string name="hint_bio">Bio</string>
+    <string name="match_request">MATCH REQUEST</string>
+    <string name="send_request">Send Request</string>
+    <string name="change_password">Change Password</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_new_password">Confirm New Password</string>
+    <string name="select_time">Select Time</string>
+    <string name="select_pitch">Select Pitch</string>
+    <string name="take_note">Take Note</string>
+    <string name="hint_amount_of_people">Amount of People</string>
+    <string name="all">All</string>
+    <string name="email_not_verified">Email not verified</string>
+    <string name="verify">Verify</string>
+    <string name="not_verified">Not Verified</string>
+    <string name="your_settings">Your Settings</string>
+    <string name="match_information">Match Information</string>
+    <string name="join_this_match">Join this Match</string>
+    <string name="request">Request</string>
+    <string name="create_request">Create Request</string>
+    <string name="create_match">Create Match</string>
+    <string name="sign_up_title">SIGN UP</string>
+    <string name="account">Account</string>
+    <string name="location">Location:</string>
+    <string name="matches">Matches</string>
+    <string name="match_list">Match List</string>
+    <string name="select_location">Select Location</string>
+    <string name="your_matches_request">Your Matches Request</string>
+    <string-array name="amount_people">
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+    </string-array>
+    
+</resources>
