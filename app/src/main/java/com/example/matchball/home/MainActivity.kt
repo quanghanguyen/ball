@@ -1,6 +1,5 @@
 package com.example.matchball.home
 
-
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -22,7 +21,6 @@ import com.example.matchball.usersetting.useroverview.UserFragment
 // phải sign out ra vài lần email mới xác thực được
 // khi đăng nhập bằng account mới thì vẫn load lại info account cũ
 // check ảnh khi tạo user
-// Xác thực email
 // get ảnh của current User
 
 //------------------------------
@@ -51,14 +49,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initObserve() {
-        mainActivityViewModel.userInfo.observe(this, {result ->
+        mainActivityViewModel.userInfo.observe(this) { result ->
             when (result) {
                 is MainActivityViewModel.UserData.LoadDataOk -> {
                     name = result.name
-                    phone = result.phone
+                    phone = authUser?.phoneNumber
+                }
+                else -> {
                 }
             }
-        })
+        }
     }
 
     private fun initUI() {
@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.request -> {
-                    if (authUser!!.isEmailVerified && name != null && phone != null) {
+                    if (name != null && phone != null) {
                         startActivity(Intent(applicationContext, RequestActivity::class.java))
                         overridePendingTransition(0, 0)
                     } else {

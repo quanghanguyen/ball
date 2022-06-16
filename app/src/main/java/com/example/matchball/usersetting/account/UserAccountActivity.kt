@@ -28,14 +28,14 @@ class UserAccountActivity : AppCompatActivity() {
     }
 
     private fun initEvents() {
-        emailVerifyCheck()
+//        emailVerifyCheck()
         back()
         changePassword()
-        verifyEmail()
+//        verifyEmail()
     }
 
     private fun initEmailVerifyObserve() {
-        userAccountViewModel.verifyEmail.observe(this, {sendResult ->
+        userAccountViewModel.verifyEmail.observe(this) { sendResult ->
             when (sendResult) {
                 is UserAccountViewModel.VerifyEmail.EmailVerifySuccess -> {
                     Toast.makeText(this, sendResult.successMessage, Toast.LENGTH_SHORT).show()
@@ -44,14 +44,14 @@ class UserAccountActivity : AppCompatActivity() {
                     Toast.makeText(this, sendResult.errorMessage, Toast.LENGTH_SHORT).show()
                 }
             }
-        })
+        }
     }
 
     private fun initObserve() {
-        userAccountViewModel.loadData.observe(this, { result ->
+        userAccountViewModel.loadData.observe(this) { result ->
             when (result) {
-                is UserAccountViewModel.UserData.LoadEmailSuccess -> {
-                    userAccountBinding.email.text = result.email
+                is UserAccountViewModel.UserData.LoadPhoneSuccess -> {
+                    userAccountBinding.phone.text = result.phone
                 }
                 is UserAccountViewModel.UserData.LoadAvatarSuccess -> {
                     userAccountBinding.avatar.setImageBitmap(result.image)
@@ -59,21 +59,21 @@ class UserAccountActivity : AppCompatActivity() {
                 is UserAccountViewModel.UserData.LoadDataFail -> {
                 }
             }
-        })
-    }
-
-    private fun emailVerifyCheck() {
-        if (authUser!!.isEmailVerified) {
-            userAccountBinding.emailStatus.visibility = View.GONE
-            userAccountBinding.verifyEmail.visibility = View.GONE
         }
     }
 
-    private fun verifyEmail() {
-        userAccountBinding.verifyEmail.setOnClickListener {
-            userAccountViewModel.handleVerifyEmail()
-        }
-    }
+//    private fun emailVerifyCheck() {
+//        if (authUser!!.isEmailVerified) {
+//            userAccountBinding.emailStatus.visibility = View.GONE
+//            userAccountBinding.verifyEmail.visibility = View.GONE
+//        }
+//    }
+
+//    private fun verifyEmail() {
+//        userAccountBinding.verifyEmail.setOnClickListener {
+//            userAccountViewModel.handleVerifyEmail()
+//        }
+//    }
 
     private fun changePassword() {
         userAccountBinding.changePassword.setOnClickListener {

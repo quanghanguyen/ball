@@ -34,7 +34,7 @@ class UserFragment : Fragment() {
     }
 
     private fun initEvent() {
-        checkEmailVerified()
+//        checkEmailVerified()
         signOut()
         goUserInfoActivity()
         goYourRequestActivity()
@@ -43,13 +43,15 @@ class UserFragment : Fragment() {
     }
 
     private fun initObserve() {
-        userFragmentViewModel.readUser.observe(this, {result ->
+        userFragmentViewModel.readUser.observe(viewLifecycleOwner) { result ->
             when (result) {
+                is UserFragmentViewModel.UserData.Loading -> {
+                }
                 is UserFragmentViewModel.UserData.ReadAvatarSuccess -> {
                     userFragmentBinding.civIntroAvatar.setImageBitmap(result.image)
                 }
                 is UserFragmentViewModel.UserData.LoadUserInfo -> {
-                    userFragmentBinding.tvIntroEmail.text = result.email
+                    userFragmentBinding.phoneIntro.text = result.phone
                 }
                 is UserFragmentViewModel.UserData.ReadAvatarError -> {
                 }
@@ -58,38 +60,58 @@ class UserFragment : Fragment() {
                         userFragmentBinding.tvIntroName.text = "Unnamed"
                     } else {
                         userFragmentBinding.tvIntroName.text = result.teamName
-                        userFragmentBinding.tvIntroName.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+                        userFragmentBinding.tvIntroName.setTextColor(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.white
+                            )
+                        )
                     }
                     if (result.teamBio == "") {
                         userFragmentBinding.bio.text = "No Bio"
                     } else {
                         userFragmentBinding.bio.text = result.teamBio
-                        userFragmentBinding.bio.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+                        userFragmentBinding.bio.setTextColor(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.black
+                            )
+                        )
                     }
-                    if (result.phone == "") {
-                        userFragmentBinding.phone.text = "No phone number"
+                    if (result.email == "") {
+                        userFragmentBinding.email.text = "No Email"
                     } else {
-                        userFragmentBinding.phone.text = result.phone
-                        userFragmentBinding.phone.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+                        userFragmentBinding.email.text = result.email
+                        userFragmentBinding.email.setTextColor(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.black
+                            )
+                        )
                     }
                     if (result.birthday == "") {
                         userFragmentBinding.birthday.text = "No date of birth"
                     } else {
                         userFragmentBinding.birthday.text = result.birthday
-                        userFragmentBinding.birthday.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+                        userFragmentBinding.birthday.setTextColor(
+                            ContextCompat.getColor(
+                                requireContext(),
+                                R.color.black
+                            )
+                        )
                     }
                 }
                 is UserFragmentViewModel.UserData.ReadInfoError -> {
                 }
             }
-        })
-    }
-
-    private fun checkEmailVerified() {
-        if (authUser!!.isEmailVerified) {
-            userFragmentBinding.emailVerified.visibility = View.GONE
         }
     }
+
+//    private fun checkEmailVerified() {
+//        if (authUser!!.isEmailVerified) {
+//            userFragmentBinding.emailVerified.visibility = View.GONE
+//        }
+//    }
 
     private fun goYourRequestActivity() {
         userFragmentBinding.requestsManager.setOnClickListener {
@@ -111,7 +133,6 @@ class UserFragment : Fragment() {
                     activity?.finish()
                 }
                 setNegativeButton("No") {_, _ ->
-
                 }
             }.create().show()
         }

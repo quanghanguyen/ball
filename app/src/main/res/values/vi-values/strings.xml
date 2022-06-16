@@ -1,0 +1,130 @@
+<resources>
+
+    <string name="app_name">Match Ball</string>
+    <string name="sign_up"><u>Đăng kí</u></string>
+    <string name="type_your_password">Nhập mật khẩu</string>
+    <string name="forgot_password">Quên mật khẩu?</string>
+    <string name="not_registered_yet">Chưa Đăng kí?</string>
+    <string name="type_your_email">Nhập Email</string>
+    <string name="sign_in">Đăng nhập</string>
+    <string name="sign_in_underline"><u>Đăng nhập</u></string>
+    <string name="set_your_password">Đặt mật khẩu</string>
+    <string name="confirm_your_password">Xác nhận mật khẩu</string>
+    <string name="btn_sign_up">Đăng kí</string>
+    <string name="or_sign_up_with">Hoặc đăng kí bằng:</string>
+    <string name="by_click">Khi nhấn Đăng kí, bạn đồng ý với</string>
+    <string name="terms_and_conditions">Điều khoản của chúng tôi</string>
+
+    <string name="pass_not_match">Mật khẩu không khớp</string>
+    <string name="empty_fields">Không được để trống</string>
+    <string name="sign_up_fail">Đăng kí thất bại</string>
+    <string name="sign_in_fail">Đăng nhập thất bại</string>
+    <string name="sign_up_success">Đăng kí thành công</string>
+    <string name="sign_in_success">Đăng nhập thành công</string>
+    <string name="it_s_easier_to_sign_up_now">Dễ dàng để đăng kí với</string>
+    <string name="i_ll_use_email_or_phone">Tôi sẽ sử dụng Số Điện thoại</string>
+    <string name="continue_with_google">Tiếp tục với Google</string>
+    <string name="already_have_account">Bạn đã có tài khoản</string>
+
+
+    <string name="facebook_app_id">1234</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">56789</string>
+    <string name="invalid_email">Invalid Email</string>
+    <string name="pass_cannot_empty">Không được để trống Mật khẩu</string>
+    <string name="list">Danh sách</string>
+    <string name="person">Người dùng</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="team_name">Tên đội:</string>
+    <string name="bio">Lời giới thiệu</string>
+    <string name="sign_out">Đăng xuất</string>
+    <string name="email">Email</string>
+    <string name="save">Lưu</string>
+    <string name="enter_bio">Nhập lời giới thiệu</string>
+    <string name="blank">Trống</string>
+    <string name="your_match_request">Trận bạn đã yêu cầu</string>
+    <string name="time">Thời gian:</string>
+    <string name="pitch">Sân:</string>
+    <string name="amount_of_people">Số lượng người:</string>
+    <string name="send">Gửi</string>
+    <string name="select">Chọn</string>
+    <string name="note">Ghi chú:</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="search_location">Tìm địa điểm</string>
+    <string name="search">Tìm kiếm</string>
+    <string name="done">Hoàn thành</string>
+    <string name="amount">Khoảng:</string>
+    <string name="join_match">Tham gia trận đấu</string>
+    <string name="join">Tham gia</string>
+    <string name="team_name_join">Tên đội tham gia</string>
+    <string name="title_activity_join_maps">JoinMapsActivity</string>
+    <string name="your_request">Trận bạn đã yêu cầu</string>
+    <string name="setting">Cài đặt</string>
+    <string name="request_list">Danh sách trận đấu</string>
+    <string name="your_request_match">Trận mà bạn đã yêu cầu</string>
+    <string name="edit">Chỉnh sửa</string>
+    <string name="delete">Xóa</string>
+    <string name="title_activity_edit_maps">EditMapsActivity</string>
+    <string name="edit_your_request">Chỉnh sửa yêu cầu</string>
+    <string name="phone">Số Điện thoại:</string>
+    <string name="unnamed">Chưa có tên</string>
+    <string name="personal_information">THÔNG TIN TÀI KHOẢN</string>
+    <string name="no_phone_number_yet">Chưa có Số điện thoại</string
+    <string name="no_date_of_birth">Chưa có ngày sinh nhật</string>
+    <string name="no_bio">Chưa có lời giới thiệu</string>
+    <string name="requests_manager">QUẢN LÍ CÁC YÊU CẦU</string>
+    <string name="edit_your_requests">Chỉnh sửa yêu cầu</string>
+    <string name="settings">CÀI ĐẶT</string>
+    <string name="account_information">Thông tin tài khoản</string>
+    <string name="change_your_password">Thay đổi mật khẩu</string>
+    <string name="your_account">Tài khoản của bạn</string>
+    <string name="hint_team_name">Tên đội</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_phone">Số điện thoại</string>
+    <string name="hint_birthday">Ngày sinh nhật</string>
+    <string name="hint_bio">Lời giới thiệu</string>
+    <string name="match_request">YÊU CẦU TRẬN ĐẤU</string>
+    <string name="send_request">Gửi yêu cầu</string>
+    <string name="change_password">Thay đổi mật khẩu</string>
+    <string name="old_password">Mật khẩu cũ</string>
+    <string name="new_password">Mật khẩu mới</string>
+    <string name="confirm_new_password">Xác nhận mật khẩu</string>
+    <string name="select_time">Chọn thời gian</string>
+    <string name="select_pitch">Chọn sân</string>
+    <string name="take_note">Ghi chú</string>
+    <string name="hint_amount_of_people">Số lượng người</string>
+    <string name="all">Tất cả</string>
+    <string name="email_not_verified">Chưa xác minh Email</string>
+    <string name="verify">Xác minh</string>
+    <string name="not_verified">Chưa xác minh</string>
+    <string name="your_settings">Cài đặt của bạn</string>
+    <string name="match_information">Thông tin trận đấu</string>
+    <string name="join_this_match">Nhận kèo</string>
+    <string name="request">Yêu cầu</string>
+    <string name="create_request">Tạo trận</string>
+    <string name="create_match">Tạo trận</string>
+    <string name="sign_up_title">ĐĂNG KÍ</string>
+    <string name="account">Tài khoản</string>
+    <string name="location">Địa điểm:</string>
+    <string name="matches">Trận</string>
+    <string name="match_list">Danh sách trận</string>
+    <string name="select_location">Chọn địa điểm</string>
+    <string name="your_matches_request">Trận của bạn</string>
+    <string name="use_phone_number">Tôi sẽ sử dụng điện thoại</string>
+    <string name="sign_in_with_phone_number">Đăng nhập với điện thoại</string>
+    <string name="no_email">Không có email</string>
+    <string name="language">Ngôn ngữ</string>
+    <string name="theme">Giao diện</string>
+    <string-array name="amount_people">
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+    </string-array>
+
+</resources>

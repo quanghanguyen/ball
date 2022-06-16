@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".signin.phone.signin.PhoneSignInActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/sign_in_new" />
+
+    <TextView
+        android:id="@+id/intro_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/sign_in_with_phone_number"
+        android:textSize="20sp"/>
+
+    <EditText
+        android:id="@+id/area_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/intro_text"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/bg_edittext"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="16dp"
+        android:text="+84" />
+
+    <EditText
+        android:id="@+id/phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/intro_text"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@+id/area_code"
+        android:background="@drawable/bg_edittext"
+        android:hint="Enter Phone Number"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="16dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/sign_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/phone_number"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/border"
+        android:fontFamily="sans-serif-medium"
+        android:paddingHorizontal="40dp"
+        android:text="@string/sign_in"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+</RelativeLayout>

@@ -55,7 +55,17 @@ class JoinActivity : AppCompatActivity() {
     private fun initEvent() {
         sendJoinRequest()
         openPitchMap()
+        makeCall()
         back()
+    }
+
+    private fun makeCall() {
+        joinBinding.call.setOnClickListener {
+            val intent = Intent(Intent.ACTION_DIAL)
+            val phoneNumber = "tel:" + joinBinding.tvJMPhone.toString()
+            intent.data = Uri.parse(phoneNumber)
+            startActivity(intent)
+        }
     }
 
     private fun back() {
@@ -74,7 +84,7 @@ class JoinActivity : AppCompatActivity() {
     }
 
     private fun openPitchMap() {
-        joinBinding.tvJMPitch.setOnClickListener {
+        joinBinding.location.setOnClickListener {
 
             intent?.let { bundle ->
                 val requests = bundle.getParcelableExtra<MatchRequest>(KEY_DATA)

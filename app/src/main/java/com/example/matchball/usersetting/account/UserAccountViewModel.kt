@@ -16,7 +16,7 @@ class UserAccountViewModel : ViewModel() {
 
     sealed class UserData {
         class LoadAvatarSuccess(val image: Bitmap) : UserData()
-        class LoadEmailSuccess(val email : String) : UserData()
+        class LoadPhoneSuccess(val phone : String) : UserData()
         object LoadDataFail : UserData()
     }
 
@@ -26,9 +26,9 @@ class UserAccountViewModel : ViewModel() {
     }
 
     fun handleLoadAvatar() {
-        val email = authUser?.email
+        val email = authUser?.phoneNumber
         loadData.postValue(email?.let
-        { UserData.LoadEmailSuccess(it) })
+        { UserData.LoadPhoneSuccess(it) })
 
         val localFile = File.createTempFile("tempImage", "jpg")
         StorageConnection.handleAvatar(uid = uid, localFile =  localFile, onSuccess = {

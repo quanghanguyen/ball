@@ -56,7 +56,7 @@
     <string name="amount">Amount:</string>
     <string name="join_match">Join Match</string>
     <string name="join">Join</string>
-    <string name="team_name_join"><u>Team Name Join</u></string>
+    <string name="team_name_join">Team Name Join</string>
     <string name="title_activity_join_maps">JoinMapsActivity</string>
     <string name="your_request">Your Request</string>
     <string name="setting">Setting</string>
@@ -110,6 +110,11 @@
     <string name="match_list">Match List</string>
     <string name="select_location">Select Location</string>
     <string name="your_matches_request">Your Matches Request</string>
+    <string name="use_phone_number">I\'ll use Phone Number</string>
+    <string name="sign_in_with_phone_number">Sign In with Phone Number</string>
+    <string name="no_email">No Email</string>
+    <string name="language">Language</string>
+    <string name="theme">Theme</string>
     <string-array name="amount_people">
         <item>4</item>
         <item>5</item>
@@ -120,5 +125,5 @@
         <item>10</item>
         <item>11</item>
     </string-array>
-    
+
 </resources>

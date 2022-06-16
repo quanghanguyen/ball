@@ -14,6 +14,7 @@
          location permissions for the "MyLocation" functionality.
     -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission
         android:name="com.google.android.gms.permission.AD_ID"
@@ -26,6 +27,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MatchBall">
+
+        <activity
+            android:name=".signin.phone.signin.PhoneSignInActivity"
+            android:exported="false"/>
+
+        <activity
+            android:name=".signin.phone.verify.PhoneVerifyActivity"
+            android:exported="false"/>
+
         <activity
             android:name=".appsetting.AppSettingActivity"
             android:exported="false" />
@@ -42,10 +52,10 @@
             android:name=".yourmatchrequest.list.YourRequestActivity"
             android:exported="false" />
 
-        <service
-            android:name=".MyJoinMatchService"
-            android:enabled="true"
-            android:exported="true" />
+<!--        <service-->
+<!--            android:name=".MyJoinMatchService"-->
+<!--            android:enabled="true"-->
+<!--            android:exported="true" />-->
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -67,16 +77,16 @@
             android:exported="false"
             android:label="@string/title_activity_edit_maps" />
 
-        <service
-            android:name=".MyFirebaseMessagingService"
-            android:enabled="true"
-            android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-            </intent-filter>
-        </service>
+<!--        <service-->
+<!--            android:name=".MyFirebaseMessagingService"-->
+<!--            android:enabled="true"-->
+<!--            android:exported="true"-->
+<!--            android:permission="com.google.android.c2dm.permission.SEND">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="com.google.firebase.MESSAGING_EVENT" />-->
+<!--                <action android:name="com.google.android.c2dm.intent.RECEIVE" />-->
+<!--            </intent-filter>-->
+<!--        </service>-->
 
         <activity
             android:name=".joinmatch.JoinActivity"

@@ -17,7 +17,6 @@ class AppSettingActivity : AppCompatActivity() {
         setContentView(appSettingBinding.root)
 
         initEvents()
-
     }
 
     private fun initEvents() {

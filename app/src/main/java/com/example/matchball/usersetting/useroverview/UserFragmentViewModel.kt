@@ -14,19 +14,21 @@ class UserFragmentViewModel : ViewModel() {
     val readUser = MutableLiveData<UserData>()
 
     sealed class UserData {
-        class LoadUserInfo(val email : String) : UserData()
+        class LoadUserInfo(val phone: String) : UserData()
         object Loading : UserData()
         class ReadAvatarSuccess(val image : Bitmap) : UserData()
         object ReadAvatarError : UserData()
-        class ReadInfoSuccess(val teamName: String, val teamBio : String, val birthday : String, val phone : String) : UserData()
+        class ReadInfoSuccess(val teamName: String, val teamBio : String, val birthday : String, val email : String) : UserData()
         object ReadInfoError : UserData()
     }
 
     fun handleReadUser() {
         readUser.postValue(UserData.Loading)
 
-        val userEmail = authUser?.email
-        readUser.postValue(UserData.LoadUserInfo(userEmail!!))
+        val userPhone = authUser?.phoneNumber
+        userPhone?.let {
+            readUser.postValue(UserData.LoadUserInfo(userPhone))
+        }
 
         uid?.let {
             DatabaseConnection.databaseReference.getReference("Users").child(it).get().addOnSuccessListener {
@@ -34,10 +36,9 @@ class UserFragmentViewModel : ViewModel() {
                     val teamName = it.child("teamName").value.toString()
                     val teamBio = it.child("teamBio").value.toString()
                     val birthday = it.child("birthday").value.toString()
-                    val phone = it.child("phone").value.toString()
+                    val email = it.child("email").value.toString()
 
-                    readUser.postValue(UserData.ReadInfoSuccess(teamName, teamBio, birthday, phone))
-
+                    readUser.postValue(UserData.ReadInfoSuccess(teamName, teamBio, birthday, email))
                 } else {
                     readUser.postValue(UserData.ReadInfoError)
                 }

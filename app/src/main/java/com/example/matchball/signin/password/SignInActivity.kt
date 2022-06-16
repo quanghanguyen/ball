@@ -27,7 +27,6 @@ class SignInActivity : AppCompatActivity() {
         initEvent()
         passwordFocusListener()
         emailFocusListener()
-
     }
 
     private fun initObserve() {

@@ -7,9 +7,9 @@ data class User (
     var teamName : String,
     @SerializedName("teamBio")
     var teamBio : String,
-    @SerializedName("email")
+    @SerializedName("birthday")
     var birthday : String,
-    @SerializedName("phone")
-    var phone : String
+    @SerializedName("email")
+    var email : String
         )
 

@@ -11,6 +11,7 @@ import com.example.matchball.R
 import com.example.matchball.databinding.ActivityIntroBinding
 import com.example.matchball.firebaseconnection.AuthConnection
 import com.example.matchball.signin.password.SignInActivity
+import com.example.matchball.signin.phone.signin.PhoneSignInActivity
 import com.example.matchball.signup.SignUpActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -42,7 +43,7 @@ class GoogleSignInActivity : AppCompatActivity() {
     }
 
     private fun initObserve() {
-        googleSignInViewModel.googleSignIn.observe(this, { result ->
+        googleSignInViewModel.googleSignIn.observe(this) { result ->
             when (result) {
                 is GoogleSignInViewModel.GoogleSignInResult.SignInOk -> {
                     Toast.makeText(this, result.message, Toast.LENGTH_SHORT).show()
@@ -56,7 +57,7 @@ class GoogleSignInActivity : AppCompatActivity() {
                 is GoogleSignInViewModel.GoogleSignInResult.Loading -> {
                 }
             }
-        })
+        }
     }
 
     private fun initEvent() {
@@ -107,7 +108,6 @@ class GoogleSignInActivity : AppCompatActivity() {
             signIn()
         }
         val localFile = File.createTempFile("tempImage", "jpg")
-
     }
 
     private fun goSignIn() {
@@ -119,7 +119,7 @@ class GoogleSignInActivity : AppCompatActivity() {
 
     private fun goSignUp() {
         googleSignInBinding.btnAnotherContinue.setOnClickListener {
-            val intent = Intent(this, SignUpActivity::class.java)
+            val intent = Intent(this, PhoneSignInActivity::class.java)
             startActivity(intent)
         }
     }

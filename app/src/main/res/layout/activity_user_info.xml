@@ -75,7 +75,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/team_phone_layout"
+            android:id="@+id/team_email_layout"
             style="@style/LoginTextInputOuterFieldStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -92,11 +92,11 @@
             app:hintTextColor="@color/yellow">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/team_phone_et"
+                android:id="@+id/team_email_et"
                 style="@style/LoginTextInputInnerFieldStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_phone"
+                android:hint="@string/email"
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -104,7 +104,7 @@
             android:id="@+id/team_birthday_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/team_phone_layout">
+            android:layout_below="@+id/team_email_layout">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/birthday_layout"

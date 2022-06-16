@@ -26,8 +26,8 @@ class UserInfoViewModel : ViewModel() {
         class LoadUserInfoSuccess(
             val name: String,
             val bio: String,
-            val email: String,
-            val phone: String
+            val birthday: String,
+            val email: String
         ) : LoadUserData()
 
         object LoadUserInfoFail : LoadUserData()
@@ -54,14 +54,14 @@ class UserInfoViewModel : ViewModel() {
                     val name = it.child("teamName").value.toString()
                     val bio = it.child("teamBio").value.toString()
                     val birthday = it.child("birthday").value.toString()
-                    val phone = it.child("phone").value.toString()
+                    val email = it.child("email").value.toString()
 
                     loadUserData.postValue(
                         LoadUserData.LoadUserInfoSuccess(
                             name,
                             bio,
                             birthday,
-                            phone
+                            email
                         )
                     )
                 } else {
@@ -72,8 +72,8 @@ class UserInfoViewModel : ViewModel() {
         }
     }
 
-    fun handleSaveUserData(teamName: String, teamBio: String, birthday: String, teamPhone: String) {
-        val user = User(teamName, teamBio, birthday, teamPhone)
+    fun handleSaveUserData(teamName: String, teamBio: String, teamBirthday: String, teamEmail: String) {
+        val user = User(teamName, teamBio, teamBirthday, teamEmail)
         DatabaseConnection.databaseReference.getReference("Users").child(uid).setValue(user)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
@@ -84,8 +84,8 @@ class UserInfoViewModel : ViewModel() {
                             }.addOnFailureListener {
                                 saveUserData.postValue(SaveUserData.SaveFail("Failed to Save Profile"))
                             }
+                        }
                     }
                 }
             }
-    }
-}
+        }

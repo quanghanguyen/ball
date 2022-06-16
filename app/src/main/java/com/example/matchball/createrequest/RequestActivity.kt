@@ -45,7 +45,7 @@ class RequestActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
     }
 
     private fun initGetNameAndPhone() {
-        requestViewModel.getNameAndPhone.observe(this, {getResult ->
+        requestViewModel.getNameAndPhone.observe(this) { getResult ->
             when (getResult) {
                 is RequestViewModel.GetNameAndPhone.GetResultOk -> {
                     teamName = getResult.name
@@ -55,14 +55,15 @@ class RequestActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
                     Toast.makeText(this, getResult.errorMessage, Toast.LENGTH_SHORT).show()
                 }
             }
-        })
+        }
     }
 
     private fun initSendRequestObserve() {
-        requestViewModel.sendRequest.observe(this, {sendRequestResult ->
+        requestViewModel.sendRequest.observe(this) { sendRequestResult ->
             when (sendRequestResult) {
                 is RequestViewModel.SendRequestResult.SendResultOk -> {
-                    Toast.makeText(this, sendRequestResult.successMessage, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, sendRequestResult.successMessage, Toast.LENGTH_SHORT)
+                        .show()
                     intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()
@@ -71,7 +72,7 @@ class RequestActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
                     Toast.makeText(this, sendRequestResult.errorMessage, Toast.LENGTH_SHORT).show()
                 }
             }
-        })
+        }
     }
 
 

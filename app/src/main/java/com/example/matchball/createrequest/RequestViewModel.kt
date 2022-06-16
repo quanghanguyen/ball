@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.matchball.firebaseconnection.AuthConnection
+import com.example.matchball.firebaseconnection.AuthConnection.authUser
 import com.example.matchball.firebaseconnection.DatabaseConnection
 import com.example.matchball.home.MainActivity
 import com.example.matchball.model.MatchRequest
@@ -39,8 +40,9 @@ class RequestViewModel : ViewModel() {
     fun handleNameAndPhone() {
         DatabaseConnection.databaseReference.getReference("Users").child(uid).get().addOnSuccessListener {
             val teamName =  it.child("teamName").value.toString()
-            val teamPhone = it.child("phone").value.toString()
-            getNameAndPhone.postValue(GetNameAndPhone.GetResultOk(teamName, teamPhone))
+//            val teamPhone = it.child("phone").value.toString()
+            val teamPhone = authUser?.phoneNumber
+            getNameAndPhone.postValue(GetNameAndPhone.GetResultOk(teamName, teamPhone!!))
         }.addOnFailureListener {
             getNameAndPhone.postValue(GetNameAndPhone.GetResultError("Failed to get Name and Phone"))
         }

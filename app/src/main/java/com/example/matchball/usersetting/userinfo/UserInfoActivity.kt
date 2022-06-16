@@ -31,7 +31,7 @@ class UserInfoActivity : AppCompatActivity() {
     }
 
     private fun initLoadUserDataObserve() {
-        userInfoViewModel.loadUserData.observe(this, { loadResult ->
+        userInfoViewModel.loadUserData.observe(this) { loadResult ->
             when (loadResult) {
                 is UserInfoViewModel.LoadUserData.LoadUserAvatarOk -> {
                     userInfoBinding.avatar.setImageBitmap(loadResult.avatar)
@@ -42,14 +42,14 @@ class UserInfoActivity : AppCompatActivity() {
                 is UserInfoViewModel.LoadUserData.LoadUserInfoSuccess -> {
                     userInfoBinding.teamNameEt.setText(loadResult.name)
                     userInfoBinding.teamBioEt.setText(loadResult.bio)
-                    userInfoBinding.teamBirthdayEt.setText(loadResult.email)
-                    userInfoBinding.teamPhoneEt.setText(loadResult.phone)
+                    userInfoBinding.teamBirthdayEt.setText(loadResult.birthday)
+                    userInfoBinding.teamEmailEt.setText(loadResult.email)
                 }
                 is UserInfoViewModel.LoadUserData.LoadUserInfoFail -> {
                     //
                 }
             }
-        })
+        }
     }
 
     private fun initEvent() {
@@ -60,7 +60,7 @@ class UserInfoActivity : AppCompatActivity() {
     }
 
     private fun initSaveProfileObserve() {
-        userInfoViewModel.saveUserData.observe(this, {result ->
+        userInfoViewModel.saveUserData.observe(this) { result ->
             when (result) {
                 is UserInfoViewModel.SaveUserData.SaveOk -> {
                     Toast.makeText(this, result.message, Toast.LENGTH_SHORT).show()
@@ -72,7 +72,7 @@ class UserInfoActivity : AppCompatActivity() {
                     Toast.makeText(this, result.message, Toast.LENGTH_SHORT).show()
                 }
             }
-        })
+        }
     }
 
     private fun selectBirthday() {
@@ -106,9 +106,9 @@ class UserInfoActivity : AppCompatActivity() {
                 val teamName = userInfoBinding.teamNameEt.text.toString()
                 val teamBio = userInfoBinding.teamBioEt.text.toString()
                 val teamBirthday = userInfoBinding.teamBirthdayEt.text.toString()
-                val teamPhone = userInfoBinding.teamPhoneEt.text.toString()
+                val teamEmail = userInfoBinding.teamEmailEt.text.toString()
 
-                userInfoViewModel.handleSaveUserData(teamName, teamBio, teamBirthday, teamPhone)
+                userInfoViewModel.handleSaveUserData(teamName, teamBio, teamBirthday, teamEmail)
         }
     }
 

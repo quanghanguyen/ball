@@ -11,7 +11,7 @@ class MainActivityViewModel : ViewModel() {
     private val uid = AuthConnection.authUser?.uid
 
     sealed class UserData {
-        class LoadDataOk(val name : String, val phone : String) : UserData()
+        class LoadDataOk(val name : String) : UserData()
         object LoadDataError : UserData()
     }
 
@@ -20,9 +20,8 @@ class MainActivityViewModel : ViewModel() {
             DatabaseConnection.databaseReference.getReference("Users").child(it).get().addOnSuccessListener {
                 if (it.exists()) {
                     val name = it.child("teamName").value.toString()
-                    val phone = it.child("phone").value.toString()
 
-                    userInfo.postValue(UserData.LoadDataOk(name, phone))
+                    userInfo.postValue(UserData.LoadDataOk(name))
                 } else {
                     userInfo.postValue(UserData.LoadDataError)
                 }
