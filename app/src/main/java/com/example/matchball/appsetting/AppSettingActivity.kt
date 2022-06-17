@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.matchball.R
+import com.example.matchball.appsetting.language.ChangeLanguageActivity
 import com.example.matchball.databinding.ActivityAppSettingBinding
 import com.example.matchball.home.MainActivity
 
@@ -20,7 +21,14 @@ class AppSettingActivity : AppCompatActivity() {
     }
 
     private fun initEvents() {
+        changeLanguage()
         back()
+    }
+
+    private fun changeLanguage() {
+        appSettingBinding.language.setOnClickListener{
+            startActivity(Intent(this, ChangeLanguageActivity::class.java))
+        }
     }
 
     private fun back() {

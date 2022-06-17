@@ -18,7 +18,6 @@ import com.example.matchball.usersetting.useroverview.UserFragment
  6/ activity_user_info : avatar
  7/ fragment_user */
 
-// phải sign out ra vài lần email mới xác thực được
 // khi đăng nhập bằng account mới thì vẫn load lại info account cũ
 // check ảnh khi tạo user
 // get ảnh của current User

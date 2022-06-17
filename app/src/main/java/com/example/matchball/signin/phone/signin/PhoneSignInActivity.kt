@@ -27,7 +27,6 @@ class PhoneSignInActivity : AppCompatActivity() {
         phoneSignInBinding = ActivityPhoneSignInBinding.inflate(layoutInflater)
         setContentView(phoneSignInBinding.root)
 
-        // Callback function for Phone Auth
         callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
@@ -75,11 +74,11 @@ class PhoneSignInActivity : AppCompatActivity() {
             Toast.makeText(this, "Please try Again", Toast.LENGTH_SHORT).show()
         } else {
             phoneNumber = areaCode + phoneNumber
-            sendVersification(phoneNumber)
+            sendVertification(phoneNumber)
         }
     }
 
-    private fun sendVersification(phoneNumber: String) {
+    private fun sendVertification(phoneNumber: String) {
         val options = PhoneAuthOptions.newBuilder(auth)
             .setPhoneNumber(phoneNumber) // Phone number to verify
             .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit

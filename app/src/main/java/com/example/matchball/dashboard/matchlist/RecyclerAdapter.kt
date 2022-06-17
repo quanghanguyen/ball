@@ -71,8 +71,8 @@ class RecyclerAdapter(private var requestList : ArrayList<MatchRequest>):
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(requestList[position])
 
-        val requestHolder = holder as MyViewHolder
-        requestHolder.bind(requestList[position])
+//        val requestHolder = holder as MyViewHolder
+//        requestHolder.bind(requestList[position])
     }
 
     override fun getItemCount(): Int {
@@ -89,7 +89,7 @@ class RecyclerAdapter(private var requestList : ArrayList<MatchRequest>):
                     val resultList = ArrayList<MatchRequest>()
                     for (row in requestList) {
                         if (row.teamName!!.contains(charSearch.lowercase(Locale.ROOT))
-                            //if (row.lowercase().contains(charSearch.lowercase(Locale.ROOT))
+//                            if (row.lowercase().contains(charSearch.lowercase(Locale.ROOT))
                         ) {
                             resultList.add(row)
                         }
