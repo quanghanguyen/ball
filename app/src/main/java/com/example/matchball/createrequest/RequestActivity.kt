@@ -23,7 +23,6 @@ class RequestActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
 
     private var teamName : String? = null
     private var teamPhone : String? = null
-//    private var locationReceived : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +39,7 @@ class RequestActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
         timeSelect()
         pitchSelect()
         peopleSelect()
-        sendRequest()
+//        sendRequest()
         back()
     }
 
@@ -77,48 +76,39 @@ class RequestActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
 
 
 
-    private fun sendRequest() {
-        val locationReceived = intent.getStringExtra("location")
-        val latitudeReceived = intent.getStringExtra("latitude")
-        val longitudeReceived = intent.getStringExtra("longitude")
-
-        requestBinding.btnSend.setOnClickListener {
-            if (requestBinding.timeEt.text.isNullOrEmpty()
-                || requestBinding.pitchEt.text.isNullOrEmpty()
-                || requestBinding.peopleSelect.text.isNullOrEmpty()
-                || latitudeReceived == null
-                || longitudeReceived == null
-                    ) {
-                Toast.makeText(this, "Please Check Your Request Again", Toast.LENGTH_SHORT).show()
-            } else {
-                val matchTime = requestBinding.timeEt.text.toString()
-                val matchPeople = requestBinding.peopleSelect.text.toString()
-                val matchNote = requestBinding.noteEt.text.toString()
-
-                teamName?.let { it1 ->
-                    teamPhone?.let { it2 ->
-                        requestViewModel.handleSendRequest(
-                            it1, matchTime, locationReceived,
-                            latitudeReceived, longitudeReceived, matchPeople, matchNote, it2
-                        )
-                    }
-                }
-            }
-        }
-    }
+//    private fun sendRequest() {
+//        val locationReceived = intent.getStringExtra("location")
+//        val latitudeReceived = intent.getStringExtra("latitude")
+//        val longitudeReceived = intent.getStringExtra("longitude")
+//
+//        requestBinding.btnSend.setOnClickListener {
+//            if (requestBinding.timeEt.text.isNullOrEmpty()
+//                || requestBinding.pitchEt.text.isNullOrEmpty()
+//                || requestBinding.peopleSelect.text.isNullOrEmpty()
+//                || latitudeReceived == null
+//                || longitudeReceived == null
+//                    ) {
+//                Toast.makeText(this, "Please Check Your Request Again", Toast.LENGTH_SHORT).show()
+//            } else {
+//                val matchTime = requestBinding.timeEt.text.toString()
+//                val matchPeople = requestBinding.peopleSelect.text.toString()
+//                val matchNote = requestBinding.noteEt.text.toString()
+//
+//                teamName?.let { it1 ->
+//                    teamPhone?.let { it2 ->
+//                        requestViewModel.handleSendRequest(
+//                            it1, matchTime, locationReceived,
+//                            latitudeReceived, longitudeReceived, matchPeople, matchNote, it2
+//                        )
+//                    }
+//                }
+//            }
+//        }
+//    }
 
     private fun back() {
         requestBinding.back.setOnClickListener {
             finish()
-        }
-    }
-
-    private fun locationReceived() {
-        val locationReceived = intent.getStringExtra("location")
-        locationReceived?.let {
-            with(requestBinding) {
-                pitchEt.setText("$locationReceived")
-            }
         }
     }
 
@@ -131,6 +121,15 @@ class RequestActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
         locationReceived()
     }
 
+    private fun locationReceived() {
+        val locationReceived = intent.getStringExtra("location")
+        locationReceived?.let {
+            with(requestBinding) {
+                pitchEt.setText("$locationReceived")
+            }
+        }
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 1) {
@@ -138,7 +137,31 @@ class RequestActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
                 var locationReceived = data?.getStringExtra("location")
                 val latitudeReceived = data?.getStringExtra("latitude")
                 val longitudeReceived = data?.getStringExtra("longitude")
-                requestBinding.pitchEt.setText((data?.getStringExtra("location")))
+                requestBinding.pitchEt.setText((locationReceived))
+//
+//                requestBinding.btnSend.setOnClickListener {
+//                    if (requestBinding.timeEt.text.isNullOrEmpty()
+//                        || requestBinding.pitchEt.text.isNullOrEmpty()
+//                        || requestBinding.peopleSelect.text.isNullOrEmpty()
+//                        || latitudeReceived == null
+//                        || longitudeReceived == null
+//                    ) {
+//                        Toast.makeText(this, "Please Check Your Request Again", Toast.LENGTH_SHORT).show()
+//                    } else {
+//                        val matchTime = requestBinding.timeEt.text.toString()
+//                        val matchPeople = requestBinding.peopleSelect.text.toString()
+//                        val matchNote = requestBinding.noteEt.text.toString()
+//
+//                        teamName?.let { it1 ->
+//                            teamPhone?.let { it2 ->
+//                                requestViewModel.handleSendRequest(
+//                                    it1, matchTime, locationReceived,
+//                                    latitudeReceived, longitudeReceived, matchPeople, matchNote, it2
+//                                )
+//                            }
+//                        }
+//                    }
+//                }
             }
         }
     }
@@ -169,7 +192,7 @@ class RequestActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
         val calendar : Calendar = Calendar.getInstance()
         requestViewModel.hour = calendar.get(Calendar.HOUR)
         requestViewModel.minute = calendar.get(Calendar.MINUTE)
-        var timePickerDialog = TimePickerDialog(this, this, requestViewModel.hour,
+        val timePickerDialog = TimePickerDialog(this, this, requestViewModel.hour,
             requestViewModel.minute,
             DateFormat.is24HourFormat(this))
         timePickerDialog.show()

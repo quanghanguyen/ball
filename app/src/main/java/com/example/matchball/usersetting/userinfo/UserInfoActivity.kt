@@ -131,12 +131,6 @@ class UserInfoActivity : AppCompatActivity() {
         }
     }
 
-    private fun back() {
-        userInfoBinding.back.setOnClickListener {
-            finish()
-        }
-    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -144,6 +138,12 @@ class UserInfoActivity : AppCompatActivity() {
             imgUri = data?.data!!
             userInfoViewModel.setUri(imgUri)
             userInfoBinding.avatar.setImageURI(imgUri)
+        }
+    }
+
+    private fun back() {
+        userInfoBinding.back.setOnClickListener {
+            finish()
         }
     }
 }

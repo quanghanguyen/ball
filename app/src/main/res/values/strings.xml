@@ -115,12 +115,6 @@
     <string name="no_email">No Email</string>
     <string name="language">Language</string>
     <string name="theme">Theme</string>
-
-<!--    //-->
-
-    <string name="select_language">Select Language</string>
-    <string name="english">English</string>
-    <string name="tieng_viet">Tiếng Việt</string>
     <string-array name="amount_people">
         <item>4</item>
         <item>5</item>
@@ -131,6 +125,18 @@
         <item>10</item>
         <item>11</item>
     </string-array>
+
+<!--    //-->
+
+    <string name="select_language">Select Language</string>
+    <string name="english">English</string>
+    <string name="tieng_viet">Tiếng Việt</string>
+    <string name="filter_all">All</string>
+    <string name="filter_my_match">My Request</string>
+    <string name="filter_newest">Newest</string>
+    <string name="filter_oldest">Oldest</string>
+    <string name="filter_done">Done</string>
+
 
 
 </resources>

@@ -1,5 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">Match Ball</string>
     <string name="sign_up"><u>Đăng kí</u></string>
     <string name="type_your_password">Nhập mật khẩu</string>
@@ -26,7 +26,6 @@
     <string name="continue_with_google">Tiếp tục với Google</string>
     <string name="already_have_account">Bạn đã có tài khoản</string>
 
-
     <string name="facebook_app_id">1234</string>
     <string name="fb_login_protocol_scheme">fb1234</string>
     <string name="facebook_client_token">56789</string>
@@ -34,7 +33,7 @@
     <string name="pass_cannot_empty">Không được để trống Mật khẩu</string>
     <string name="list">Danh sách</string>
     <string name="person">Người dùng</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="team_name">Tên đội:</string>
     <string name="bio">Lời giới thiệu</string>
@@ -54,7 +53,7 @@
     <string name="search_location">Tìm địa điểm</string>
     <string name="search">Tìm kiếm</string>
     <string name="done">Hoàn thành</string>
-    <string name="amount">Khoảng:</string>
+    <string name="amount">Số người:</string>
     <string name="join_match">Tham gia trận đấu</string>
     <string name="join">Tham gia</string>
     <string name="team_name_join">Tên đội tham gia</string>
@@ -70,7 +69,7 @@
     <string name="phone">Số Điện thoại:</string>
     <string name="unnamed">Chưa có tên</string>
     <string name="personal_information">THÔNG TIN TÀI KHOẢN</string>
-    <string name="no_phone_number_yet">Chưa có Số điện thoại</string
+    <string name="no_phone_number_yet">Chưa có Số điện thoại</string>
     <string name="no_date_of_birth">Chưa có ngày sinh nhật</string>
     <string name="no_bio">Chưa có lời giới thiệu</string>
     <string name="requests_manager">QUẢN LÍ CÁC YÊU CẦU</string>
@@ -126,5 +125,16 @@
         <item>10</item>
         <item>11</item>
     </string-array>
+
+<!--////////////////////////////////////////-->
+
+    <string name="select_language">Lựa chọn ngôn ngữ</string>
+    <string name="english">English</string>
+    <string name="tieng_viet">Tiếng Việt</string>
+    <string name="filter_all">Tất cả</string>
+    <string name="filter_my_match">Trận của tôi</string>
+    <string name="filter_newest">Mới nhất</string>
+    <string name="filter_oldest">Cũ nhất</string>
+    <string name="filter_done">Đã xong</string>
 
 </resources>

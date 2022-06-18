@@ -50,8 +50,10 @@
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.1395" />
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_app_setting.xml" value="0.2" />
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_change_language.xml" value="0.2" />
-        <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_intro.xml" value="0.1" />
+        <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_change_password.xml" value="0.21481481481481482" />
+        <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_intro.xml" value="0.2" />
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_join.xml" value="0.2" />
+        <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_main.xml" value="0.21481481481481482" />
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_phone_sign_in.xml" value="0.2" />
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_phone_verify.xml" value="0.2" />
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_sign_in.xml" value="0.2" />

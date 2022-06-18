@@ -7,8 +7,10 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.example.matchball.databinding.ActivityJoinBinding
+import com.example.matchball.firebaseconnection.AuthConnection.authUser
 import com.example.matchball.home.MainActivity
 import com.example.matchball.model.MatchRequest
 
@@ -53,10 +55,17 @@ class JoinActivity : AppCompatActivity() {
     }
 
     private fun initEvent() {
+        checkRequest()
         sendJoinRequest()
         openPitchMap()
         makeCall()
         back()
+    }
+
+    private fun checkRequest() {
+        if (joinBinding.tvJMPhone.text == authUser?.phoneNumber) {
+            joinBinding.btnJoin.visibility = View.GONE
+        }
     }
 
     private fun makeCall() {

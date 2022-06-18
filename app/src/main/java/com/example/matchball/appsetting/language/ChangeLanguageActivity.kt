@@ -15,7 +15,6 @@ import kotlin.system.exitProcess
 class ChangeLanguageActivity : AppCompatActivity() {
 
     private lateinit var changeLanguageBinding: ActivityChangeLanguageBinding
-//    lateinit var spinner: Spinner
     lateinit var locale: Locale
     private var currentLanguage = "en"
     private var currentLang: String? = null
@@ -27,6 +26,7 @@ class ChangeLanguageActivity : AppCompatActivity() {
 
         initEvents()
 
+        currentLanguage = intent.getStringExtra(currentLang).toString()
         val list = ArrayList<String>()
         list.add("Select Language")
         list.add("English")
@@ -68,12 +68,11 @@ class ChangeLanguageActivity : AppCompatActivity() {
             val conf = res.configuration
             conf.locale = locale
             res.updateConfiguration(conf, dm)
-            val refresh = Intent(this, MainActivity::class.java
-            )
+            val refresh = Intent(this, MainActivity::class.java)
             refresh.putExtra(currentLang, localeName)
             startActivity(refresh)
         } else {
-            Toast.makeText(this, "Language already selected)!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Language already selected!", Toast.LENGTH_SHORT).show();
         }
     }
 

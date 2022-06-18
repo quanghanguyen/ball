@@ -2,6 +2,7 @@ package com.example.matchball.dashboard.matchlist
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.matchball.R
 import com.example.matchball.firebaseconnection.DatabaseConnection
 import com.example.matchball.model.FilterModel
 import com.example.matchball.model.MatchRequest
@@ -43,7 +44,6 @@ class MatchListViewModel : ViewModel() {
                     matchListResult.postValue(MatchListResult.ResultOk(listMatch))
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
                 matchListResult.postValue(MatchListResult.ResultError("Failed to load Data"))
             }

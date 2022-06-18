@@ -44,7 +44,7 @@ class MatchListFragment : Fragment() {
     }
 
     private fun initObserve() {
-        matchListViewModel.matchListResult.observe(this, { result ->
+        matchListViewModel.matchListResult.observe(viewLifecycleOwner) { result ->
             listFragmentBinding.swipe.isRefreshing = false
             when (result) {
                 is MatchListViewModel.MatchListResult.Loading -> {
@@ -61,7 +61,7 @@ class MatchListFragment : Fragment() {
                     filterAdapter.addFilterNewData(result.filterList)
 
                     filterAdapter.setOnItemClickListerner(object :
-                        FilterAdapter.OnItemClickListerner{
+                        FilterAdapter.OnItemClickListerner {
                         override fun onItemClick(position: Int) {
                             if (position == 0) {
                                 matchRequestAdapter.addNewData(matchList)
@@ -70,7 +70,7 @@ class MatchListFragment : Fragment() {
                     })
                 }
             }
-        })
+        }
     }
 
     private fun initFilterList() {

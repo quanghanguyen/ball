@@ -176,18 +176,18 @@ import java.io.IOException
                 if (location.isEmpty() || address.latitude.toString() == null || address.longitude.toString() == null) {
                     Toast.makeText(applicationContext, "Location is Invalid", Toast.LENGTH_SHORT).show()
                 } else {
-                    val intent = Intent(this, RequestActivity::class.java)
-                    intent.putExtra("location", location)
-                    intent.putExtra("latitude", address.latitude.toString())
-                    intent.putExtra("longitude", address.longitude.toString())
-                    startActivity(intent)
-                    finish()
-//                    val intent = Intent()
+//                    val intent = Intent(this, RequestActivity::class.java)
 //                    intent.putExtra("location", location)
 //                    intent.putExtra("latitude", address.latitude.toString())
 //                    intent.putExtra("longitude", address.longitude.toString())
-//                    setResult(RESULT_OK, intent)
+//                    startActivity(intent)
 //                    finish()
+                    val intent = Intent()
+                    intent.putExtra("location", location)
+                    intent.putExtra("latitude", address.latitude.toString())
+                    intent.putExtra("longitude", address.longitude.toString())
+                    setResult(RESULT_OK, intent)
+                    finish()
                 }
             }
         }

@@ -52,7 +52,6 @@ class PhoneSignInActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-
         initEvents()
     }
 
@@ -80,10 +79,10 @@ class PhoneSignInActivity : AppCompatActivity() {
 
     private fun sendVertification(phoneNumber: String) {
         val options = PhoneAuthOptions.newBuilder(auth)
-            .setPhoneNumber(phoneNumber) // Phone number to verify
-            .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-            .setActivity(this) // Activity (for callback binding)
-            .setCallbacks(callbacks) // OnVerificationStateChangedCallbacks
+            .setPhoneNumber(phoneNumber)
+            .setTimeout(60L, TimeUnit.SECONDS)
+            .setActivity(this)
+            .setCallbacks(callbacks)
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
