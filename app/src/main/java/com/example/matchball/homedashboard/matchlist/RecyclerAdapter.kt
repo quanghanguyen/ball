@@ -1,4 +1,4 @@
-package com.example.matchball.dashboard.matchlist
+package com.example.matchball.homedashboard.matchlist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

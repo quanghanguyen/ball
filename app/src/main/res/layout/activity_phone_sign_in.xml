@@ -30,6 +30,7 @@
         android:background="@drawable/bg_edittext"
         android:paddingHorizontal="16dp"
         android:paddingVertical="16dp"
+        android:textColor="@color/black"
         android:text="+84" />
 
     <EditText
@@ -43,6 +44,7 @@
         android:layout_toEndOf="@+id/area_code"
         android:background="@drawable/bg_edittext"
         android:hint="Enter Phone Number"
+        android:textColor="@color/black"
         android:paddingHorizontal="16dp"
         android:paddingVertical="16dp" />
 

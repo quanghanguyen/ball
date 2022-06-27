@@ -9,8 +9,9 @@ import androidx.fragment.app.Fragment
 import com.example.matchball.R
 import com.example.matchball.createrequest.RequestActivity
 import com.example.matchball.databinding.ActivityMainBinding
-import com.example.matchball.dashboard.matchlist.MatchListFragment
+import com.example.matchball.homedashboard.matchlist.MatchListFragment
 import com.example.matchball.firebaseconnection.AuthConnection.authUser
+import com.example.matchball.mymatches.MyMatchesFragment
 import com.example.matchball.usersetting.useroverview.UserFragment
 
 /* Sửa UI :
@@ -81,6 +82,11 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.person -> {
                     fragment = UserFragment()
+                    loadFragment(fragment)
+                    true
+                }
+                R.id.my_matches -> {
+                    fragment = MyMatchesFragment()
                     loadFragment(fragment)
                     true
                 }

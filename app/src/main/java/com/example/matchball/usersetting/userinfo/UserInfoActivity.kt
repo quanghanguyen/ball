@@ -15,7 +15,7 @@ import java.util.*
 class UserInfoActivity : AppCompatActivity() {
 
     private lateinit var userInfoBinding: ActivityUserInfoBinding
-    private lateinit var imgUri : Uri
+//    private lateinit var imgUri : Uri
     private val userInfoViewModel : UserInfoViewModel by viewModels()
     val cal: Calendar = Calendar.getInstance()
 
@@ -33,12 +33,12 @@ class UserInfoActivity : AppCompatActivity() {
     private fun initLoadUserDataObserve() {
         userInfoViewModel.loadUserData.observe(this) { loadResult ->
             when (loadResult) {
-                is UserInfoViewModel.LoadUserData.LoadUserAvatarOk -> {
-                    userInfoBinding.avatar.setImageBitmap(loadResult.avatar)
-                }
-                is UserInfoViewModel.LoadUserData.LoadUserAvatarFail -> {
-                    //
-                }
+//                is UserInfoViewModel.LoadUserData.LoadUserAvatarOk -> {
+//                    userInfoBinding.avatar.setImageBitmap(loadResult.avatar)
+//                }
+//                is UserInfoViewModel.LoadUserData.LoadUserAvatarFail -> {
+//                    //
+//                }
                 is UserInfoViewModel.LoadUserData.LoadUserInfoSuccess -> {
                     userInfoBinding.teamNameEt.setText(loadResult.name)
                     userInfoBinding.teamBioEt.setText(loadResult.bio)
@@ -54,7 +54,7 @@ class UserInfoActivity : AppCompatActivity() {
 
     private fun initEvent() {
         selectBirthday()
-        changeAvatar()
+//        changeAvatar()
         saveProfile()
         back()
     }
@@ -64,8 +64,6 @@ class UserInfoActivity : AppCompatActivity() {
             when (result) {
                 is UserInfoViewModel.SaveUserData.SaveOk -> {
                     Toast.makeText(this, result.message, Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
                     finish()
                 }
                 is UserInfoViewModel.SaveUserData.SaveFail -> {
@@ -112,34 +110,24 @@ class UserInfoActivity : AppCompatActivity() {
         }
     }
 
-    private fun changeAvatar() {
-        userInfoBinding.avatar.setOnClickListener {
-//            val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {result ->
-//                when (result.resultCode) {
-//                    RESULT_OK -> {
-//                        val intent = Intent()
-//                        intent.type = "image/*"
-//                        intent.action = Intent.ACTION_GET_CONTENT
-//                    }
-//                }
-//            }
-
-            val intent = Intent()
-            intent.type = "image/*"
-            intent.action = Intent.ACTION_GET_CONTENT
-            startActivityForResult(intent, 100)
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == 100 && resultCode == RESULT_OK) {
-            imgUri = data?.data!!
-            userInfoViewModel.setUri(imgUri)
-            userInfoBinding.avatar.setImageURI(imgUri)
-        }
-    }
+//    private fun changeAvatar() {
+//        userInfoBinding.avatar.setOnClickListener {
+//            val intent = Intent()
+//            intent.type = "image/*"
+//            intent.action = Intent.ACTION_GET_CONTENT
+//            startActivityForResult(intent, 100)
+//        }
+//    }
+//
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//
+//        if (requestCode == 100 && resultCode == RESULT_OK) {
+//            imgUri = data?.data!!
+//            userInfoViewModel.setUri(imgUri)
+//            userInfoBinding.avatar.setImageURI(imgUri)
+//        }
+//    }
 
     private fun back() {
         userInfoBinding.back.setOnClickListener {

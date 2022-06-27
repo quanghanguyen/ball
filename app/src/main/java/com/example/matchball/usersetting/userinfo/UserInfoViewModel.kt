@@ -13,11 +13,11 @@ import java.io.File
 class UserInfoViewModel : ViewModel() {
 
     private val uid = AuthConnection.auth.currentUser!!.uid
-    private var imgUri: Uri? = null
-
-    fun setUri(uri: Uri) {
-        imgUri = uri
-    }
+//    private var imgUri: Uri? = null
+//
+//    fun setUri(uri: Uri) {
+//        imgUri = uri
+//    }
 
     val saveUserData = MutableLiveData<SaveUserData>()
     val loadUserData = MutableLiveData<LoadUserData>()
@@ -31,8 +31,8 @@ class UserInfoViewModel : ViewModel() {
         ) : LoadUserData()
 
         object LoadUserInfoFail : LoadUserData()
-        class LoadUserAvatarOk(val avatar: Bitmap) : LoadUserData()
-        object LoadUserAvatarFail : LoadUserData()
+//        class LoadUserAvatarOk(val avatar: Bitmap) : LoadUserData()
+//        object LoadUserAvatarFail : LoadUserData()
     }
 
     sealed class SaveUserData {
@@ -41,12 +41,12 @@ class UserInfoViewModel : ViewModel() {
     }
 
     fun handleLoadUserData() {
-        val localFile = File.createTempFile("tempImage", "jpg")
-        StorageConnection.handleAvatar(uid = uid, localFile = localFile, onSuccess = {
-            loadUserData.postValue(LoadUserData.LoadUserAvatarOk(it))
-        }, onFail = {
-            loadUserData.postValue(LoadUserData.LoadUserAvatarFail)
-        })
+//        val localFile = File.createTempFile("tempImage", "jpg")
+//        StorageConnection.handleAvatar(uid = uid, localFile = localFile, onSuccess = {
+//            loadUserData.postValue(LoadUserData.LoadUserAvatarOk(it))
+//        }, onFail = {
+//            loadUserData.postValue(LoadUserData.LoadUserAvatarFail)
+//        })
 
         DatabaseConnection.databaseReference.getReference("Users").child(uid).get()
             .addOnSuccessListener {
@@ -68,24 +68,22 @@ class UserInfoViewModel : ViewModel() {
                     loadUserData.postValue(LoadUserData.LoadUserInfoFail)
                 }
             }.addOnFailureListener {
-            it.printStackTrace()
-        }
+                it.printStackTrace()
+            }
     }
 
-    fun handleSaveUserData(teamName: String, teamBio: String, teamBirthday: String, teamEmail: String) {
+    fun handleSaveUserData(
+        teamName: String,
+        teamBio: String,
+        teamBirthday: String,
+        teamEmail: String
+    ) {
         val user = User(teamName, teamBio, teamBirthday, teamEmail)
         DatabaseConnection.databaseReference.getReference("Users").child(uid).setValue(user)
             .addOnCompleteListener {
-                if (it.isSuccessful) {
-                    imgUri?.let { it1 ->
-                        StorageConnection.storageReference.getReference("Users/" + AuthConnection.auth.currentUser?.uid)
-                            .putFile(it1).addOnSuccessListener {
-                                saveUserData.postValue(SaveUserData.SaveOk("Save Profile Success"))
-                            }.addOnFailureListener {
-                                saveUserData.postValue(SaveUserData.SaveFail("Failed to Save Profile"))
-                            }
-                        }
-                    }
-                }
+                saveUserData.postValue(SaveUserData.SaveOk("Save Profile Success"))
+            }.addOnFailureListener {
+                saveUserData.postValue(SaveUserData.SaveFail("Failed to Save Profile"))
             }
-        }
+    }
+}

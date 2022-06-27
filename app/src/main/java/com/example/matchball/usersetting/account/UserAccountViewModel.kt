@@ -1,11 +1,13 @@
 package com.example.matchball.usersetting.account
 
 import android.graphics.Bitmap
+import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.matchball.firebaseconnection.AuthConnection
 import com.example.matchball.firebaseconnection.AuthConnection.authUser
 import com.example.matchball.firebaseconnection.StorageConnection
+import com.example.matchball.usersetting.userinfo.UserInfoViewModel
 import java.io.File
 
 class UserAccountViewModel : ViewModel() {
@@ -13,6 +15,18 @@ class UserAccountViewModel : ViewModel() {
     private val uid = AuthConnection.auth.currentUser!!.uid
     val loadData = MutableLiveData<UserData>()
     val verifyEmail = MutableLiveData<VerifyEmail>()
+    val saveUserData = MutableLiveData<SaveUserData>()
+
+    private var imgUri: Uri? = null
+
+    fun setUri(uri: Uri) {
+        imgUri = uri
+    }
+
+    sealed class SaveUserData {
+        class SaveOk(val message: String) : SaveUserData()
+        class SaveFail(val message: String) : SaveUserData()
+    }
 
     sealed class UserData {
         class LoadAvatarSuccess(val image: Bitmap) : UserData()
@@ -38,6 +52,17 @@ class UserAccountViewModel : ViewModel() {
         })
     }
 
+    fun handleSaveAvatar() {
+        imgUri?.let { it ->
+            StorageConnection.storageReference.getReference("Users/" + AuthConnection.auth.currentUser?.uid)
+                .putFile(it).addOnSuccessListener {
+                    saveUserData.postValue(SaveUserData.SaveOk("Save Profile Success"))
+                }.addOnFailureListener {
+                    saveUserData.postValue(SaveUserData.SaveFail("Failed to Save Profile"))
+                }
+        }
+    }
+
     fun handleVerifyEmail() {
         authUser!!.sendEmailVerification().addOnCompleteListener { task ->
             if (task.isSuccessful) {
@@ -47,5 +72,4 @@ class UserAccountViewModel : ViewModel() {
             }
         }
     }
-
 }

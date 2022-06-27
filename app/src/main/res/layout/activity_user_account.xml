@@ -40,24 +40,6 @@
         android:layout_marginTop="16dp"
         android:src="@drawable/blank_image" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/email_status"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@+id/avatar"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:text="@string/email_not_verified"-->
-<!--        android:textColor="@android:color/holo_red_light" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/verify_email"-->
-<!--        style="@style/ButtonStyle"-->
-<!--        android:layout_below="@+id/email_status"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:text="@string/verify" />-->
-
         <LinearLayout
             android:id="@+id/email_container"
             android:layout_below="@+id/avatar"
@@ -121,5 +103,13 @@
             </LinearLayout>
 
         </RelativeLayout>
+
+    <Button
+        android:visibility="gone"
+        android:id="@+id/save_avatar"
+        style="@style/ButtonStyle"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/save" />
 
 </RelativeLayout>

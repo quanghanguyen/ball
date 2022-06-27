@@ -1,4 +1,4 @@
-package com.example.matchball.dashboard.filterbar
+package com.example.matchball.homedashboard.filterbar
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

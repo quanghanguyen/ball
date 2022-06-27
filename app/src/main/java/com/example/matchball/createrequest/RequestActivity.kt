@@ -39,7 +39,6 @@ class RequestActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
         timeSelect()
         pitchSelect()
         peopleSelect()
-//        sendRequest()
         back()
     }
 
@@ -74,38 +73,6 @@ class RequestActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
         }
     }
 
-
-
-//    private fun sendRequest() {
-//        val locationReceived = intent.getStringExtra("location")
-//        val latitudeReceived = intent.getStringExtra("latitude")
-//        val longitudeReceived = intent.getStringExtra("longitude")
-//
-//        requestBinding.btnSend.setOnClickListener {
-//            if (requestBinding.timeEt.text.isNullOrEmpty()
-//                || requestBinding.pitchEt.text.isNullOrEmpty()
-//                || requestBinding.peopleSelect.text.isNullOrEmpty()
-//                || latitudeReceived == null
-//                || longitudeReceived == null
-//                    ) {
-//                Toast.makeText(this, "Please Check Your Request Again", Toast.LENGTH_SHORT).show()
-//            } else {
-//                val matchTime = requestBinding.timeEt.text.toString()
-//                val matchPeople = requestBinding.peopleSelect.text.toString()
-//                val matchNote = requestBinding.noteEt.text.toString()
-//
-//                teamName?.let { it1 ->
-//                    teamPhone?.let { it2 ->
-//                        requestViewModel.handleSendRequest(
-//                            it1, matchTime, locationReceived,
-//                            latitudeReceived, longitudeReceived, matchPeople, matchNote, it2
-//                        )
-//                    }
-//                }
-//            }
-//        }
-//    }
-
     private fun back() {
         requestBinding.back.setOnClickListener {
             finish()
@@ -115,7 +82,6 @@ class RequestActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
     private fun pitchSelect() {
         requestBinding.pitchSelect.setOnClickListener {
             intent = Intent(this, RequestMapsActivity::class.java)
-//            startActivity(intent)
             startActivityForResult(intent, 1)
         }
         locationReceived()
@@ -138,30 +104,29 @@ class RequestActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
                 val latitudeReceived = data?.getStringExtra("latitude")
                 val longitudeReceived = data?.getStringExtra("longitude")
                 requestBinding.pitchEt.setText((locationReceived))
-//
-//                requestBinding.btnSend.setOnClickListener {
-//                    if (requestBinding.timeEt.text.isNullOrEmpty()
-//                        || requestBinding.pitchEt.text.isNullOrEmpty()
-//                        || requestBinding.peopleSelect.text.isNullOrEmpty()
-//                        || latitudeReceived == null
-//                        || longitudeReceived == null
-//                    ) {
-//                        Toast.makeText(this, "Please Check Your Request Again", Toast.LENGTH_SHORT).show()
-//                    } else {
-//                        val matchTime = requestBinding.timeEt.text.toString()
-//                        val matchPeople = requestBinding.peopleSelect.text.toString()
-//                        val matchNote = requestBinding.noteEt.text.toString()
-//
-//                        teamName?.let { it1 ->
-//                            teamPhone?.let { it2 ->
-//                                requestViewModel.handleSendRequest(
-//                                    it1, matchTime, locationReceived,
-//                                    latitudeReceived, longitudeReceived, matchPeople, matchNote, it2
-//                                )
-//                            }
-//                        }
-//                    }
-//                }
+                requestBinding.btnSend.setOnClickListener {
+                    if (requestBinding.timeEt.text.isNullOrEmpty()
+                        || requestBinding.pitchEt.text.isNullOrEmpty()
+                        || requestBinding.peopleSelect.text.isNullOrEmpty()
+                        || latitudeReceived == null
+                        || longitudeReceived == null
+                    ) {
+                        Toast.makeText(this, "Please Check Your Request Again", Toast.LENGTH_SHORT).show()
+                    } else {
+                        val matchTime = requestBinding.timeEt.text.toString()
+                        val matchPeople = requestBinding.peopleSelect.text.toString()
+                        val matchNote = requestBinding.noteEt.text.toString()
+
+                        teamName?.let { it1 ->
+                            teamPhone?.let { it2 ->
+                                requestViewModel.handleSendRequest(
+                                    it1, matchTime, locationReceived,
+                                    latitudeReceived, longitudeReceived, matchPeople, matchNote, it2
+                                )
+                            }
+                        }
+                    }
+                }
             }
         }
     }

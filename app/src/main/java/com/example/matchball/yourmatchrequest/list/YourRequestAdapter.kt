@@ -3,8 +3,6 @@ package com.example.matchball.yourmatchrequest.list
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.matchball.dashboard.filterbar.FilterAdapter
-import com.example.matchball.dashboard.matchlist.RecyclerAdapter
 import com.example.matchball.databinding.YourRequestItemsBinding
 import com.example.matchball.model.MatchRequest
 

@@ -126,7 +126,7 @@
         <item>11</item>
     </string-array>
 
-<!--    //-->
+    <!--    //-->
 
     <string name="select_language">Select Language</string>
     <string name="english">English</string>
@@ -136,7 +136,9 @@
     <string name="filter_newest">Newest</string>
     <string name="filter_oldest">Oldest</string>
     <string name="filter_done">Done</string>
-
+    <string name="my_match">My Match</string>
+    <string name="home">Home</string>
+    <string name="home_pitch">Pitch</string>
 
 
 </resources>

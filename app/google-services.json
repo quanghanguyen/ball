@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "387684150534",
+    "firebase_url": "https://firstproject-47115-default-rtdb.firebaseio.com",
     "project_id": "firstproject-47115",
     "storage_bucket": "firstproject-47115.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "387684150534-76rc42l90nfsr6fp0j4bl93qgt1v09p3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.matchball",
+            "certificate_hash": "4ab156b54f2b9bf62e8af8d29d315c094ba03a8b"
+          }
+        },
         {
           "client_id": "387684150534-hkuc0tdebda81068vi89a1av8hoknn4p.apps.googleusercontent.com",
           "client_type": 3

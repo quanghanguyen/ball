@@ -1,8 +1,7 @@
-package com.example.matchball.dashboard.matchlist
+package com.example.matchball.homedashboard.matchlist
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.matchball.R
 import com.example.matchball.firebaseconnection.DatabaseConnection
 import com.example.matchball.model.FilterModel
 import com.example.matchball.model.MatchRequest
@@ -18,18 +17,18 @@ class MatchListViewModel : ViewModel() {
         object Loading : MatchListResult()
         class ResultOk(val matchList : ArrayList<MatchRequest>) : MatchListResult()
         class ResultError(val errorMessage : String) : MatchListResult()
-        class ResultFilterOk(val filterList : ArrayList<FilterModel>) : MatchListResult()
+//        class ResultFilterOk(val filterList : ArrayList<FilterModel>) : MatchListResult()
     }
 
     fun handleMatchList() {
-        matchListResult.postValue(MatchListResult.Loading)
-        val data = ArrayList<FilterModel>()
-        data.add(FilterModel("All"))
-        data.add(FilterModel("Newest"))
-        data.add(FilterModel("Oldest"))
-        data.add(FilterModel("Upcoming"))
-        data.add(FilterModel("Done"))
-        matchListResult.postValue(MatchListResult.ResultFilterOk(data))
+//        matchListResult.postValue(MatchListResult.Loading)
+//        val data = ArrayList<FilterModel>()
+//        data.add(FilterModel("All"))
+//        data.add(FilterModel("Newest"))
+//        data.add(FilterModel("Oldest"))
+//        data.add(FilterModel("Upcoming"))
+//        data.add(FilterModel("Done"))
+//        matchListResult.postValue(MatchListResult.ResultFilterOk(data))
 
         DatabaseConnection.databaseReference.getReference("MatchRequest").addValueEventListener(object :
             ValueEventListener {
