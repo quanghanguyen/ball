@@ -34,7 +34,6 @@ class UserFragment : Fragment() {
     }
 
     private fun initEvent() {
-//        checkEmailVerified()
         signOut()
         goUserInfoActivity()
         goYourRequestActivity()
@@ -106,12 +105,6 @@ class UserFragment : Fragment() {
             }
         }
     }
-
-//    private fun checkEmailVerified() {
-//        if (authUser!!.isEmailVerified) {
-//            userFragmentBinding.emailVerified.visibility = View.GONE
-//        }
-//    }
 
     private fun goYourRequestActivity() {
         userFragmentBinding.requestsManager.setOnClickListener {

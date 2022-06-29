@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import com.example.matchball.databinding.ActivityYourRequestDetailsBinding
 import com.example.matchball.model.MatchRequest
 import com.example.matchball.yourmatchrequest.list.YourRequestActivity
@@ -33,8 +34,21 @@ class YourRequestDetailsActivity : AppCompatActivity() {
 
         initEvents()
         initObserve()
-//        yourRequestDetailsViewModel.handleLoadData()
+        initDeleteDataObserve()
+    }
 
+    private fun initDeleteDataObserve() {
+        yourRequestDetailsViewModel.deleteData.observe(this) {result ->
+            when (result) {
+                is YourRequestDetailsViewModel.DeleteData.ResultOk -> {
+                    Toast.makeText(this, result.message, Toast.LENGTH_SHORT).show()
+                    finish()
+                }
+                is YourRequestDetailsViewModel.DeleteData.ResultError -> {
+                    Toast.makeText(this, result.errorMessage, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 
     private fun initObserve() {
@@ -55,6 +69,23 @@ class YourRequestDetailsActivity : AppCompatActivity() {
         back()
         getIntentData()
         updateRequest()
+        deleteRequest()
+    }
+
+    private fun deleteRequest() {
+        requestDetailsBinding.delete.setOnClickListener {
+            val deleteDialog = AlertDialog.Builder(this)
+            deleteDialog.apply {
+                setTitle("Delete")
+                setMessage("Do you want to delete this request?")
+                setPositiveButton("Yes") {_, _ ->
+                    id?.let { it1 -> yourRequestDetailsViewModel.handleDeleteData(it1) }
+                }
+                setNegativeButton("No") {_, _ ->
+                    //
+                }
+            }.create().show()
+        }
     }
 
     private fun updateRequest() {
@@ -83,7 +114,7 @@ class YourRequestDetailsActivity : AppCompatActivity() {
 
                 if (matchData != null) {
                     id = matchData.id
-                    id?.let { yourRequestDetailsViewModel.setId(it) }
+//                    id?.let { yourRequestDetailsViewModel.setId(it) }
                 }
             }
         }

@@ -11,15 +11,22 @@ class YourRequestDetailsViewModel : ViewModel() {
 
     private val uid = AuthConnection.auth.currentUser!!.uid
     val updateData = MutableLiveData<UpdateData>()
+    val deleteData = MutableLiveData<DeleteData>()
 
     private var requestId: String? = null
-    fun setId(id : String) {
-        requestId = id
-    }
+
+//    fun setId(id : String) {
+//        requestId = id
+//    }
 
     sealed class UpdateData {
         class ResultOk(val message : String) : UpdateData()
         class ResultError(val errorMessage: String) : UpdateData()
+    }
+
+    sealed class DeleteData {
+        class ResultOk(val message: String) : DeleteData()
+        class ResultError(val errorMessage: String) : DeleteData()
     }
 
     fun handleUpdateData(id : String, teamNameReceived : String, matchTime : String, locationReceived: String?,
@@ -51,5 +58,22 @@ class YourRequestDetailsViewModel : ViewModel() {
         DatabaseConnection.databaseReference.getReference("MatchRequest")
             .child(id)
             .updateChildren(user)
+    }
+
+    fun handleDeleteData(id : String) {
+        DatabaseConnection.databaseReference
+            .getReference("MatchRequest")
+            .child(id)
+            .removeValue()
+
+        DatabaseConnection.databaseReference
+            .getReference("User_MatchRequest")
+            .child(uid)
+            .child(id)
+            .removeValue().addOnSuccessListener {
+                deleteData.postValue(DeleteData.ResultOk("Success"))
+            }.addOnFailureListener {
+                deleteData.postValue(DeleteData.ResultError("Failed"))
+            }
     }
 }
