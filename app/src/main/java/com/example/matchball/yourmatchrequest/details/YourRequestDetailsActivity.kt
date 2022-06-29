@@ -4,12 +4,15 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.matchball.databinding.ActivityYourRequestDetailsBinding
 import com.example.matchball.model.MatchRequest
 import com.example.matchball.yourmatchrequest.list.YourRequestActivity
 
 class YourRequestDetailsActivity : AppCompatActivity() {
+
+    private var id : String? = null
 
     private lateinit var requestDetailsBinding : ActivityYourRequestDetailsBinding
     private val yourRequestDetailsViewModel : YourRequestDetailsViewModel by viewModels()
@@ -29,27 +32,44 @@ class YourRequestDetailsActivity : AppCompatActivity() {
         setContentView(requestDetailsBinding.root)
 
         initEvents()
-//        initObserve()
+        initObserve()
 //        yourRequestDetailsViewModel.handleLoadData()
 
     }
 
-//    private fun initObserve() {
-//        yourRequestDetailsViewModel.loadData.observe(this, { result ->
-//            when (result) {
-//                is YourRequestDetailsViewModel.LoadData.ResultOk -> {
-//                    requestDetailsBinding.timeEt.setText(result.time)
-//                    requestDetailsBinding.pitchEt.setText(result.location)
-//                    requestDetailsBinding.noteEt.setText(result.note)
-//                    requestDetailsBinding.peopleSelect.setText(result.people)
-//                }
-//            }
-//        })
-//    }
+    private fun initObserve() {
+        yourRequestDetailsViewModel.updateData.observe(this) {result ->
+            when (result) {
+                is YourRequestDetailsViewModel.UpdateData.ResultOk -> {
+                    Toast.makeText(this, result.message, Toast.LENGTH_SHORT).show()
+                    finish()
+                }
+                is YourRequestDetailsViewModel.UpdateData.ResultError -> {
+                    Toast.makeText(this, result.errorMessage, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
 
     private fun initEvents() {
         back()
         getIntentData()
+        updateRequest()
+    }
+
+    private fun updateRequest() {
+        requestDetailsBinding.update.setOnClickListener {
+            val teamName = "X"
+            val matchTime = requestDetailsBinding.timeEt.text.toString()
+            val location = requestDetailsBinding.pitchEt.text.toString()
+            val latitude = "1.25014"
+            val longitude = "2.15652"
+            val people = requestDetailsBinding.peopleSelect.text.toString()
+            val note = requestDetailsBinding.noteEt.text.toString()
+            val phone = "45612137855"
+            id?.let { it1 -> yourRequestDetailsViewModel.handleUpdateData(it1, teamName, matchTime, location, latitude,
+                longitude, people, note, phone) }
+        }
     }
 
     private fun getIntentData() {
@@ -60,6 +80,11 @@ class YourRequestDetailsActivity : AppCompatActivity() {
                 pitchEt.setText(matchData?.pitch)
                 noteEt.setText(matchData?.note)
                 peopleSelect.setText(matchData?.people)
+
+                if (matchData != null) {
+                    id = matchData.id
+                    id?.let { yourRequestDetailsViewModel.setId(it) }
+                }
             }
         }
     }

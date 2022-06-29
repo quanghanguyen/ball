@@ -47,21 +47,20 @@ class RequestViewModel : ViewModel() {
         }
     }
 
-    fun handleSendRequest(teamNameReceived : String, matchTime : String, locationReceived: String?,
+    fun handleSendRequest(id : String, teamNameReceived : String, matchTime : String, locationReceived: String?,
                           latitudeReceived: String?, longitudeReceived : String?, matchPeople: String?,
                           matchNote : String, teamPhoneReceived : String) {
 
-        val matchRequest = MatchRequest(teamNameReceived, matchTime, locationReceived, latitudeReceived, longitudeReceived,
+        val matchRequest = MatchRequest(id, teamNameReceived, matchTime, locationReceived, latitudeReceived, longitudeReceived,
             matchPeople, matchNote, teamPhoneReceived)
 
-        DatabaseConnection.databaseReference.getReference("MatchRequest").push().setValue(matchRequest).addOnCompleteListener {
+        DatabaseConnection.databaseReference.getReference("MatchRequest").child(id).setValue(matchRequest).addOnCompleteListener {
             if (it.isSuccessful) {
                 sendRequest.postValue(SendRequestResult.SendResultOk("Send Request Success"))
             } else {
                 sendRequest.postValue(SendRequestResult.SendResultError("Send Request Fail"))
             }
         }
-
-        DatabaseConnection.databaseReference.getReference("User_MatchRequest").child(uid).push().setValue(matchRequest)
+        DatabaseConnection.databaseReference.getReference("User_MatchRequest").child(uid).child(id).setValue(matchRequest)
     }
 }

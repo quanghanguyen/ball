@@ -50,11 +50,11 @@
 
             <TextView
                 android:id="@+id/notification_content"
-                android:padding="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="8dp"
                 android:text="Đội A đã đồng ý đá với bạn lúc 16:00 (30/06/2022)"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
             <ImageView
                 android:id="@+id/icon"

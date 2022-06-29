@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.matchball.databinding.FragmentWaitBinding
 
-class WaitFragment : Fragment() {
+class UpComingFragment : Fragment() {
 
     private lateinit var fragmentWaitBinding: FragmentWaitBinding
 

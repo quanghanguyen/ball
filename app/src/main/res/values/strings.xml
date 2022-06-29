@@ -142,6 +142,9 @@
     <string name="my_matches">My Matches</string>
     <string name="open_chat">Open Chat</string>
     <string name="notifications">Notifications</string>
+    <string name="match_confirm">Match Confirm</string>
+    <string name="confirm">Confirm</string>
+    <string name="update">Update</string>
 
 
 </resources>

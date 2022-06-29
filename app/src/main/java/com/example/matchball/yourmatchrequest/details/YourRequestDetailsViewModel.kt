@@ -1,41 +1,55 @@
 package com.example.matchball.yourmatchrequest.details
 
+import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.matchball.firebaseconnection.AuthConnection
 import com.example.matchball.firebaseconnection.DatabaseConnection
+import com.example.matchball.model.MatchRequest
 
 class YourRequestDetailsViewModel : ViewModel() {
 
     private val uid = AuthConnection.auth.currentUser!!.uid
-    val loadData = MutableLiveData<LoadData>()
+    val updateData = MutableLiveData<UpdateData>()
 
-    sealed class LoadData {
-        class ResultOk(
-            val time : String,
-            val location: String,
-            val people : String,
-            val note : String
-        ) : LoadData()
-        class ResultError(val errorMessage : String) : LoadData()
+    private var requestId: String? = null
+    fun setId(id : String) {
+        requestId = id
     }
 
-//    fun handleLoadData() {
-//        DatabaseConnection.databaseReference.getReference("User_MatchRequest").child(uid).get()
-//            .addOnSuccessListener {
-//                if (it.exists())
-//                {
-//                    val time = it.child("time").value.toString()
-//                    val location = it.child("pitch").value.toString()
-//                    val people = it.child("people").value.toString()
-//                    val note = it.child("note").value.toString()
-//
-//                    loadData.postValue(LoadData.ResultOk(time, location, people, note))
-//                } else {
-//                    loadData.postValue(LoadData.ResultError("Error"))
-//                }
-//            }.addOnFailureListener {
-//                it.printStackTrace()
-//            }
-//        }
+    sealed class UpdateData {
+        class ResultOk(val message : String) : UpdateData()
+        class ResultError(val errorMessage: String) : UpdateData()
     }
+
+    fun handleUpdateData(id : String, teamNameReceived : String, matchTime : String, locationReceived: String?,
+                         latitudeReceived: String?, longitudeReceived : String?, matchPeople: String?,
+                         matchNote : String, teamPhoneReceived : String) {
+
+            val user = mapOf (
+                "id" to id,
+                "teamName" to teamNameReceived,
+                "time" to matchTime,
+                "pitch" to locationReceived!!,
+                "pitchLatitude" to latitudeReceived!!,
+                "pitchLongitude" to longitudeReceived!!,
+                "people" to matchPeople!!,
+                "note" to matchNote,
+                "phone" to teamPhoneReceived
+            )
+
+        DatabaseConnection.databaseReference.getReference("User_MatchRequest")
+            .child(uid)
+            .child(id)
+            .updateChildren(user)
+            .addOnSuccessListener {
+                updateData.postValue(UpdateData.ResultOk("Success"))
+        }.addOnFailureListener {
+            updateData.postValue(UpdateData.ResultError("Fail"))
+            }
+
+        DatabaseConnection.databaseReference.getReference("MatchRequest")
+            .child(id)
+            .updateChildren(user)
+    }
+}

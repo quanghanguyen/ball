@@ -15,6 +15,7 @@ import com.example.matchball.R
 import com.example.matchball.chat.BaseApplication
 import com.example.matchball.home.MainActivity
 import com.example.matchball.databinding.ActivityRequestBinding
+import com.example.matchball.firebaseconnection.DatabaseConnection
 import java.util.*
 
 class RequestActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
@@ -113,16 +114,19 @@ class RequestActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
                     ) {
                         Toast.makeText(this, "Please Check Your Request Again", Toast.LENGTH_SHORT).show()
                     } else {
+                        val id = DatabaseConnection.databaseReference.getReference("MatchRequest").push().key
                         val matchTime = requestBinding.timeEt.text.toString()
                         val matchPeople = requestBinding.peopleSelect.text.toString()
                         val matchNote = requestBinding.noteEt.text.toString()
 
                         teamName?.let { it1 ->
                             teamPhone?.let { it2 ->
-                                requestViewModel.handleSendRequest(
-                                    it1, matchTime, locationReceived,
-                                    latitudeReceived, longitudeReceived, matchPeople, matchNote, it2
-                                )
+                                if (id != null) {
+                                    requestViewModel.handleSendRequest(
+                                        id, it1, matchTime, locationReceived,
+                                        latitudeReceived, longitudeReceived, matchPeople, matchNote, it2
+                                    )
+                                }
                             }
                         }
                     }

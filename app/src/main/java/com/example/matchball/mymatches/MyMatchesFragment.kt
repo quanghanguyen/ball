@@ -17,7 +17,6 @@ class MyMatchesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initViewPager()
-
     }
 
     private fun initViewPager() {
@@ -30,9 +29,12 @@ class MyMatchesFragment : Fragment() {
                     tab.text = "Wait"
                 }
                 1 -> {
-                    tab.text = "UpComing"
+                    tab.text = "My Request"
                 }
                 2 -> {
+                    tab.text = "UpComing"
+                }
+                3 -> {
                     tab.text = "Done"
                 }
             }
@@ -42,7 +44,7 @@ class MyMatchesFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         myMatchesBinding = FragmentMyMatchesBinding.inflate(inflater, container, false)
         return myMatchesBinding.root
     }

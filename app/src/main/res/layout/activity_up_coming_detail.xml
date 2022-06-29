@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mymatches.wait.details.UpComingDetailActivity"
+    tools:context=".mymatches.wait.details.WaitDetailActivity"
     android:padding="16dp">
 
     <ImageView

@@ -26,7 +26,10 @@ class NotificationActivity : AppCompatActivity() {
 
     private fun itemsClick() {
         notificationBinding.notification1.setOnClickListener {
-            startActivity(Intent(this, ConfirmActivity::class.java))
+            val content = notificationBinding.notificationContent.text.toString()
+            val intent = Intent(this, ConfirmActivity::class.java)
+            intent.putExtra("content", content)
+            startActivity(intent)
         }
     }
 

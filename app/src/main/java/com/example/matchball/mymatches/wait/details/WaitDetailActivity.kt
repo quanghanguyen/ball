@@ -8,7 +8,7 @@ import com.example.matchball.chat.ChatListActivity
 import com.example.matchball.databinding.ActivityUpComingDetailBinding
 import com.example.matchball.model.MatchRequest
 
-class UpComingDetailActivity : AppCompatActivity() {
+class WaitDetailActivity : AppCompatActivity() {
 
     private lateinit var upComingDetailBinding: ActivityUpComingDetailBinding
 
@@ -17,7 +17,7 @@ class UpComingDetailActivity : AppCompatActivity() {
         private const val KEY_DATA = "request_data"
         fun startDetails(context: Context, data : MatchRequest?)
         {
-            context.startActivity(Intent(context, UpComingDetailActivity::class.java).apply {
+            context.startActivity(Intent(context, WaitDetailActivity::class.java).apply {
                 putExtra(KEY_DATA, data)
             })
         }

@@ -33,11 +33,9 @@ class WaitViewModel : ViewModel() {
                     loadUpComingMatch.postValue(LoadResult.ResultOk(list))
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
                 loadUpComingMatch.postValue(LoadResult.ResultError("Error"))
             }
         })
     }
-
 }

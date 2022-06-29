@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.matchball.databinding.FragmentUpcomingBinding
 import com.example.matchball.model.MatchRequest
 import com.example.matchball.mymatches.MyMatchListAdapter
-import com.example.matchball.mymatches.wait.details.UpComingDetailActivity
+import com.example.matchball.mymatches.wait.details.WaitDetailActivity
 
-class UpcomingFragment : Fragment() {
+class WaitFragment : Fragment() {
 
     private lateinit var upcomingBinding: FragmentUpcomingBinding
     private val upComingViewModel : WaitViewModel by viewModels()
@@ -49,7 +49,7 @@ class UpcomingFragment : Fragment() {
             myMatchesAdapter.setOnItemClickListerner(object :
                 MyMatchListAdapter.OnItemClickListerner{
                 override fun onItemClick(data: MatchRequest) {
-                    UpComingDetailActivity.startDetails(context, data)
+                    WaitDetailActivity.startDetails(context, data)
                 }
             })
         }

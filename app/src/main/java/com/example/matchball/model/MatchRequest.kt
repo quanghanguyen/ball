@@ -6,6 +6,8 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class MatchRequest (
+    @SerializedName("id")
+    val id: String? = "",
     @SerializedName("teamName")
     val teamName : String? = "",
     @SerializedName("time")

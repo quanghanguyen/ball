@@ -34,11 +34,6 @@ class UserAccountViewModel : ViewModel() {
         object LoadDataFail : UserData()
     }
 
-//    sealed class VerifyEmail {
-//        class EmailVerifySuccess(val successMessage : String) : VerifyEmail()
-//        class EmailVerifyFail(val errorMessage : String) : VerifyEmail()
-//    }
-
     fun handleLoadAvatar() {
         val phone = authUser?.phoneNumber
         loadData.postValue(phone?.let
@@ -62,14 +57,4 @@ class UserAccountViewModel : ViewModel() {
                 }
         }
     }
-
-//    fun handleVerifyEmail() {
-//        authUser!!.sendEmailVerification().addOnCompleteListener { task ->
-//            if (task.isSuccessful) {
-//                verifyEmail.postValue(VerifyEmail.EmailVerifySuccess("Send Verify Email Success"))
-//            } else {
-//                verifyEmail.postValue(VerifyEmail.EmailVerifyFail("Send Verify Email Fail"))
-//            }
-//        }
-//    }
 }

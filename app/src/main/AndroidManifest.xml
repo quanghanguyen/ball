@@ -26,7 +26,7 @@
             android:name=".notification.NotificationActivity"
             android:exported="false" />
         <activity
-            android:name=".mymatches.wait.details.UpComingDetailActivity"
+            android:name=".mymatches.wait.details.WaitDetailActivity"
             android:exported="false" />
         <activity
             android:name=".chat.ChatListActivity"
