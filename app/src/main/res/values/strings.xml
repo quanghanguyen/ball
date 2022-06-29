@@ -139,6 +139,9 @@
     <string name="my_match">My Match</string>
     <string name="home">Home</string>
     <string name="home_pitch">Pitch</string>
+    <string name="my_matches">My Matches</string>
+    <string name="open_chat">Open Chat</string>
+    <string name="notifications">Notifications</string>
 
 
 </resources>

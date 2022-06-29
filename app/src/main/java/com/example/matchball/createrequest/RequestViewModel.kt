@@ -40,7 +40,6 @@ class RequestViewModel : ViewModel() {
     fun handleNameAndPhone() {
         DatabaseConnection.databaseReference.getReference("Users").child(uid).get().addOnSuccessListener {
             val teamName =  it.child("teamName").value.toString()
-//            val teamPhone = it.child("phone").value.toString()
             val teamPhone = authUser?.phoneNumber
             getNameAndPhone.postValue(GetNameAndPhone.GetResultOk(teamName, teamPhone!!))
         }.addOnFailureListener {

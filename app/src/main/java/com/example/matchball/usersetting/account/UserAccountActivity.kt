@@ -24,7 +24,7 @@ class UserAccountActivity : AppCompatActivity() {
         initEvents()
         initObserve()
         initAvatarObserve()
-        initEmailVerifyObserve()
+//        initEmailVerifyObserve()
         userAccountViewModel.handleLoadAvatar()
     }
 
@@ -51,18 +51,18 @@ class UserAccountActivity : AppCompatActivity() {
         }
     }
 
-    private fun initEmailVerifyObserve() {
-        userAccountViewModel.verifyEmail.observe(this) { sendResult ->
-            when (sendResult) {
-                is UserAccountViewModel.VerifyEmail.EmailVerifySuccess -> {
-                    Toast.makeText(this, sendResult.successMessage, Toast.LENGTH_SHORT).show()
-                }
-                is UserAccountViewModel.VerifyEmail.EmailVerifyFail -> {
-                    Toast.makeText(this, sendResult.errorMessage, Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-    }
+//    private fun initEmailVerifyObserve() {
+//        userAccountViewModel.verifyEmail.observe(this) { sendResult ->
+//            when (sendResult) {
+//                is UserAccountViewModel.VerifyEmail.EmailVerifySuccess -> {
+//                    Toast.makeText(this, sendResult.successMessage, Toast.LENGTH_SHORT).show()
+//                }
+//                is UserAccountViewModel.VerifyEmail.EmailVerifyFail -> {
+//                    Toast.makeText(this, sendResult.errorMessage, Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//        }
+//    }
 
     private fun initObserve() {
         userAccountViewModel.loadData.observe(this) { result ->

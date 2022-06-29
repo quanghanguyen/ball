@@ -14,7 +14,7 @@ class UserAccountViewModel : ViewModel() {
 
     private val uid = AuthConnection.auth.currentUser!!.uid
     val loadData = MutableLiveData<UserData>()
-    val verifyEmail = MutableLiveData<VerifyEmail>()
+//    val verifyEmail = MutableLiveData<VerifyEmail>()
     val saveUserData = MutableLiveData<SaveUserData>()
 
     private var imgUri: Uri? = null
@@ -34,14 +34,14 @@ class UserAccountViewModel : ViewModel() {
         object LoadDataFail : UserData()
     }
 
-    sealed class VerifyEmail {
-        class EmailVerifySuccess(val successMessage : String) : VerifyEmail()
-        class EmailVerifyFail(val errorMessage : String) : VerifyEmail()
-    }
+//    sealed class VerifyEmail {
+//        class EmailVerifySuccess(val successMessage : String) : VerifyEmail()
+//        class EmailVerifyFail(val errorMessage : String) : VerifyEmail()
+//    }
 
     fun handleLoadAvatar() {
-        val email = authUser?.phoneNumber
-        loadData.postValue(email?.let
+        val phone = authUser?.phoneNumber
+        loadData.postValue(phone?.let
         { UserData.LoadPhoneSuccess(it) })
 
         val localFile = File.createTempFile("tempImage", "jpg")
@@ -63,13 +63,13 @@ class UserAccountViewModel : ViewModel() {
         }
     }
 
-    fun handleVerifyEmail() {
-        authUser!!.sendEmailVerification().addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                verifyEmail.postValue(VerifyEmail.EmailVerifySuccess("Send Verify Email Success"))
-            } else {
-                verifyEmail.postValue(VerifyEmail.EmailVerifyFail("Send Verify Email Fail"))
-            }
-        }
-    }
+//    fun handleVerifyEmail() {
+//        authUser!!.sendEmailVerification().addOnCompleteListener { task ->
+//            if (task.isSuccessful) {
+//                verifyEmail.postValue(VerifyEmail.EmailVerifySuccess("Send Verify Email Success"))
+//            } else {
+//                verifyEmail.postValue(VerifyEmail.EmailVerifyFail("Send Verify Email Fail"))
+//            }
+//        }
+//    }
 }

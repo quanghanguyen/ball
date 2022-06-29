@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.matchball.databinding.YourRequestItemsBinding
 import com.example.matchball.model.MatchRequest
 
-class YourRequestAdapter(private var yourRequestList : ArrayList<MatchRequest>) :
-    RecyclerView.Adapter<YourRequestAdapter.MyViewHolder>(){
+class YourRequestAdapter(private var yourRequestList : ArrayList<MatchRequest>)
+    : RecyclerView.Adapter<YourRequestAdapter.MyViewHolder>(){
 
     private lateinit var listerner: OnItemClickListerner
 
@@ -52,8 +52,7 @@ class YourRequestAdapter(private var yourRequestList : ArrayList<MatchRequest>) 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val yourRequestItems =
             YourRequestItemsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        val viewHolder : MyViewHolder = MyViewHolder(yourRequestItems, listerner)
-        return viewHolder
+        return MyViewHolder(yourRequestItems, listerner)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {

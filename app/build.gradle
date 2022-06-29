@@ -3,9 +3,9 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id("kotlin-parcelize")
-    id 'com.google.gms.google-services' // for Firebase
-    id 'com.google.firebase.crashlytics' // for Firebase Crashlytics}
-
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+    id 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 }
 
 android {
@@ -81,6 +81,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging-ktx:23.0.6'
     implementation 'com.sendbird.sdk:uikit:1.2.4'
     implementation 'com.sendbird.sdk:sendbird-android-sdk:3.0.141'
+
+    implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
 
 }
 

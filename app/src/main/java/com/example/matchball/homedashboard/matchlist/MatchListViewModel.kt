@@ -17,19 +17,9 @@ class MatchListViewModel : ViewModel() {
         object Loading : MatchListResult()
         class ResultOk(val matchList : ArrayList<MatchRequest>) : MatchListResult()
         class ResultError(val errorMessage : String) : MatchListResult()
-//        class ResultFilterOk(val filterList : ArrayList<FilterModel>) : MatchListResult()
     }
 
     fun handleMatchList() {
-//        matchListResult.postValue(MatchListResult.Loading)
-//        val data = ArrayList<FilterModel>()
-//        data.add(FilterModel("All"))
-//        data.add(FilterModel("Newest"))
-//        data.add(FilterModel("Oldest"))
-//        data.add(FilterModel("Upcoming"))
-//        data.add(FilterModel("Done"))
-//        matchListResult.postValue(MatchListResult.ResultFilterOk(data))
-
         DatabaseConnection.databaseReference.getReference("MatchRequest").addValueEventListener(object :
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

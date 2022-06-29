@@ -12,6 +12,7 @@ import android.widget.*
 import androidx.activity.viewModels
 import androidx.core.view.isEmpty
 import com.example.matchball.R
+import com.example.matchball.chat.BaseApplication
 import com.example.matchball.home.MainActivity
 import com.example.matchball.databinding.ActivityRequestBinding
 import java.util.*
@@ -60,8 +61,7 @@ class RequestActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
         requestViewModel.sendRequest.observe(this) { sendRequestResult ->
             when (sendRequestResult) {
                 is RequestViewModel.SendRequestResult.SendResultOk -> {
-                    Toast.makeText(this, sendRequestResult.successMessage, Toast.LENGTH_SHORT)
-                        .show()
+                    Toast.makeText(this, sendRequestResult.successMessage, Toast.LENGTH_SHORT).show()
                     intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()

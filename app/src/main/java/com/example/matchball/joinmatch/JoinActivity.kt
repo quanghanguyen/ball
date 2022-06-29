@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import com.example.matchball.databinding.ActivityJoinBinding
 import com.example.matchball.firebaseconnection.AuthConnection.authUser
 import com.example.matchball.home.MainActivity
@@ -17,6 +18,7 @@ import com.example.matchball.model.MatchRequest
 class JoinActivity : AppCompatActivity() {
 
     private lateinit var joinBinding: ActivityJoinBinding
+    private val joinViewModel : JoinViewModel by viewModels()
 
     companion object
     {
@@ -37,6 +39,7 @@ class JoinActivity : AppCompatActivity() {
 
         initIntentData()
         initEvent()
+        initObserve()
     }
 
     private fun initIntentData() {
@@ -62,6 +65,20 @@ class JoinActivity : AppCompatActivity() {
         back()
     }
 
+    private fun initObserve() {
+        joinViewModel.saveRequest.observe(this) {result ->
+            when (result) {
+                is JoinViewModel.SaveResultResult.ResultOk -> {
+                    Toast.makeText(this, result.successMessage, Toast.LENGTH_SHORT).show()
+                    finish()
+                }
+                is JoinViewModel.SaveResultResult.ResultError -> {
+                    Toast.makeText(this, result.errorMessage, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
     private fun checkRequest() {
         if (joinBinding.tvJMPhone.text == authUser?.phoneNumber) {
             joinBinding.btnJoin.visibility = View.GONE
@@ -85,19 +102,26 @@ class JoinActivity : AppCompatActivity() {
 
     private fun sendJoinRequest() {
         joinBinding.btnJoin.setOnClickListener {
-            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+            intent?.let { bundle ->
+                val requests = bundle.getParcelableExtra<MatchRequest>(KEY_DATA)
+                val pitchLatitude = requests?.pitchLatitude
+                val pitchLongitude = requests?.pitchLongitude
+                val teamName = joinBinding.tvJMTeamName.text.toString()
+                val time = joinBinding.tvJMTime.text.toString()
+                val location = joinBinding.tvJMPitch.text.toString()
+                val people = joinBinding.tvJMPeople.text.toString()
+                val note = joinBinding.tvJMNote.text.toString()
+                val phone = joinBinding.tvJMPhone.text.toString()
+
+                joinViewModel.handleSaveRequest(teamName, time, location, pitchLatitude, pitchLongitude, people, note, phone)
+            }
         }
     }
 
     private fun openPitchMap() {
         joinBinding.location.setOnClickListener {
-
             intent?.let { bundle ->
                 val requests = bundle.getParcelableExtra<MatchRequest>(KEY_DATA)
-
                 val pitchLatitude = requests?.pitchLatitude?.toDouble()
                 val pitchLongitude = requests?.pitchLongitude?.toDouble()
                 val pitchName = requests?.pitch.toString()

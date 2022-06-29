@@ -3,7 +3,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        mavenCentral() // Warning: this repository is going to shut down soon
+        mavenCentral()
         maven { url "https://jitpack.io" }
         maven { url "https://repo.sendbird.com/public/maven" }
     }

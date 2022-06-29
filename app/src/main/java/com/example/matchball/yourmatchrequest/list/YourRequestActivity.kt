@@ -35,13 +35,12 @@ class YourRequestActivity : AppCompatActivity() {
 
     private fun back() {
         yourRequestBinding.back.setOnClickListener {
-//            startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
     }
 
     private fun initObserve() {
-        yourRequestViewModel.yourRequestListResult.observe(this, { result ->
+        yourRequestViewModel.yourRequestListResult.observe(this) { result ->
             when (result) {
                 is YourRequestViewModel.YourRequestListResult.ResultOk -> {
                     yourRequestAdapter.addNewData(result.matchList)
@@ -50,7 +49,7 @@ class YourRequestActivity : AppCompatActivity() {
                     Toast.makeText(this, result.errorMessage, Toast.LENGTH_SHORT).show()
                 }
             }
-        })
+        }
     }
 
     private fun initList() {
