@@ -1,13 +1,15 @@
-package com.example.matchball.yourmatchrequest.list
+package com.example.matchball.mymatches.myrequest
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.matchball.databinding.FragmentMyRequestBinding
 import com.example.matchball.databinding.YourRequestItemsBinding
+import com.example.matchball.homedashboard.matchlist.RecyclerAdapter
 import com.example.matchball.model.MatchRequest
 
-class YourRequestAdapter(private var yourRequestList : ArrayList<MatchRequest>)
-    : RecyclerView.Adapter<YourRequestAdapter.MyViewHolder>(){
+class MyRequestAdapter(private var myRequestList : ArrayList<MatchRequest>)
+    : RecyclerView.Adapter<MyRequestAdapter.MyViewHolder>() {
 
     private lateinit var listerner: OnItemClickListerner
 
@@ -15,39 +17,39 @@ class YourRequestAdapter(private var yourRequestList : ArrayList<MatchRequest>)
         fun onItemClick(data: MatchRequest)
     }
 
-    fun setOnItemClickListerner(listerner: OnItemClickListerner) {
-        this.listerner = listerner
-    }
-
     fun addNewData(list: ArrayList<MatchRequest>) {
-        yourRequestList = list
+        myRequestList = list
         notifyDataSetChanged()
     }
 
     fun addMoreData(list: ArrayList<MatchRequest>) {
-        yourRequestList.addAll(list)
+        myRequestList.addAll(list)
         notifyDataSetChanged()
     }
 
     fun remove(matchRequest: MatchRequest) {
     }
 
+    fun setOnItemClickListerner(listerner: OnItemClickListerner) {
+        this.listerner = listerner
+    }
+
     class MyViewHolder(
         private val yourRequestItemsBinding: YourRequestItemsBinding,
         private val listerner: OnItemClickListerner
         ) : RecyclerView.ViewHolder(yourRequestItemsBinding.root) {
-            fun bind(data : MatchRequest) {
-                with(yourRequestItemsBinding) {
-                    tvTime.text = data.time
-                    tvAmount.text = data.people
-                    tvPitch.text = data.pitch
+        fun bind(data : MatchRequest) {
+            with(yourRequestItemsBinding) {
+                tvTime.text = data.time
+                tvAmount.text = data.people
+                tvPitch.text = data.pitch
 
-                    yourRequestItemsBinding.items.setOnClickListener {
-                        listerner.onItemClick(data)
-                    }
+                yourRequestItemsBinding.items.setOnClickListener {
+                    listerner.onItemClick(data)
                 }
             }
         }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val yourRequestItems =
@@ -56,10 +58,10 @@ class YourRequestAdapter(private var yourRequestList : ArrayList<MatchRequest>)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(yourRequestList[position])
+        holder.bind(myRequestList[position])
     }
 
     override fun getItemCount(): Int {
-        return yourRequestList.size
+        return myRequestList.size
     }
 }

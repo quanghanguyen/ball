@@ -36,11 +36,11 @@ class PhoneVerifyActivity : AppCompatActivity() {
                 val credential : PhoneAuthCredential = PhoneAuthProvider.getCredential(
                     storedVerificationId.toString(), otp)
                 signInWithPhoneAuthCredential(credential)
-            }else{
+            }else {
                 Toast.makeText(this,"Enter OTP", Toast.LENGTH_SHORT).show()
             }
         }
-        }
+    }
 
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         auth.signInWithCredential(credential).addOnCompleteListener(this) { task ->

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".yourmatchrequest.details.YourRequestDetailsActivity"
+    tools:context=".mymatches.myrequest.details.YourRequestDetailsActivity"
     android:padding="16dp">
 
     <RelativeLayout

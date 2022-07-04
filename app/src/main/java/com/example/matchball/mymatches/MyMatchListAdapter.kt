@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.matchball.databinding.MyMatchItemsBinding
 import com.example.matchball.model.MatchRequest
-import com.example.matchball.yourmatchrequest.list.YourRequestAdapter
 
 class MyMatchListAdapter(private var myMatchList : ArrayList<MatchRequest>)
     : RecyclerView.Adapter<MyMatchListAdapter.MyViewHolder>(){

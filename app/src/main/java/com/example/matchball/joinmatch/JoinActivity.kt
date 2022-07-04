@@ -81,7 +81,11 @@ class JoinActivity : AppCompatActivity() {
 
     private fun checkRequest() {
         if (joinBinding.tvJMPhone.text == authUser?.phoneNumber) {
-            joinBinding.btnJoin.visibility = View.GONE
+            with(joinBinding) {
+                btnJoin.visibility = View.GONE
+                call.visibility = View.GONE
+                status.visibility = View.GONE
+            }
         }
     }
 

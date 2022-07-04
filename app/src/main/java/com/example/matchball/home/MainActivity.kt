@@ -11,6 +11,7 @@ import com.example.matchball.createrequest.RequestActivity
 import com.example.matchball.databinding.ActivityMainBinding
 import com.example.matchball.homedashboard.matchlist.MatchListFragment
 import com.example.matchball.firebaseconnection.AuthConnection.authUser
+import com.example.matchball.map.MapsActivity
 import com.example.matchball.mymatches.MyMatchesFragment
 import com.example.matchball.usersetting.useroverview.UserFragment
 
@@ -27,7 +28,6 @@ import com.example.matchball.usersetting.useroverview.UserFragment
 
 // Sửa các function deprecated : Map, UserInfoActivity
 // Search
-// Sort
 // Notification
 
 class MainActivity : AppCompatActivity() {
@@ -88,6 +88,13 @@ class MainActivity : AppCompatActivity() {
                 R.id.my_matches -> {
                     fragment = MyMatchesFragment()
                     loadFragment(fragment)
+                    true
+                }
+                R.id.pitch -> {
+//                    fragment = MapsFragment()
+//                    loadFragment(fragment)
+                    startActivity(Intent(applicationContext, MapsActivity::class.java))
+                    overridePendingTransition(0, 0)
                     true
                 }
                 R.id.request -> {

@@ -1,23 +1,34 @@
-package com.example.matchball.yourmatchrequest.details
+package com.example.matchball.mymatches.myrequest.details
 
-import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.matchball.createrequest.RequestViewModel
 import com.example.matchball.firebaseconnection.AuthConnection
 import com.example.matchball.firebaseconnection.DatabaseConnection
-import com.example.matchball.model.MatchRequest
 
 class YourRequestDetailsViewModel : ViewModel() {
 
     private val uid = AuthConnection.auth.currentUser!!.uid
+
+    val getNameAndPhone = MutableLiveData<GetNameAndPhone>()
     val updateData = MutableLiveData<UpdateData>()
     val deleteData = MutableLiveData<DeleteData>()
 
-    private var requestId: String? = null
+    var day: Int = 0
+    var month: Int = 0
+    var year: Int = 0
+    var hour: Int = 0
+    var minute: Int = 0
+    var myDay: Int = 0
+    var myMonth: Int = 0
+    var myYear: Int = 0
+    var myHour: Int = 0
+    var myMinute: Int = 0
 
-//    fun setId(id : String) {
-//        requestId = id
-//    }
+    sealed class GetNameAndPhone {
+        class GetResultOk(val name : String, val phone : String) : GetNameAndPhone()
+        class GetResultError(val errorMessage : String) : GetNameAndPhone()
+    }
 
     sealed class UpdateData {
         class ResultOk(val message : String) : UpdateData()
@@ -75,5 +86,15 @@ class YourRequestDetailsViewModel : ViewModel() {
             }.addOnFailureListener {
                 deleteData.postValue(DeleteData.ResultError("Failed"))
             }
+    }
+
+    fun handleNameAndPhone() {
+        DatabaseConnection.databaseReference.getReference("Users").child(uid).get().addOnSuccessListener {
+            val teamName =  it.child("teamName").value.toString()
+            val teamPhone = AuthConnection.authUser?.phoneNumber
+            getNameAndPhone.postValue(GetNameAndPhone.GetResultOk(teamName, teamPhone!!))
+        }.addOnFailureListener {
+            getNameAndPhone.postValue(GetNameAndPhone.GetResultError("Failed to get Name and Phone"))
+        }
     }
 }

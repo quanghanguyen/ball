@@ -11,13 +11,13 @@ class SignUpViewModel : ViewModel() {
 //    val signUpResult : LiveData<LoginResult> = _loginOk
 
     sealed class SignUpResult {
-        object Loading : SignUpResult()
+//        object Loading : SignUpResult()
         class LoginOk(val message: String) : SignUpResult()
         class LoginError(val message: String) : SignUpResult()
     }
 
     fun handleSignUp(email: String, password: String) {
-        signUpResult.postValue(SignUpResult.Loading)
+//        signUpResult.postValue(SignUpResult.Loading)
         AuthConnection.auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
             if (it.isSuccessful) {
                 signUpResult.postValue(SignUpResult.LoginOk("Sign Up Success"))

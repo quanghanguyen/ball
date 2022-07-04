@@ -17,7 +17,6 @@ import com.example.matchball.firebaseconnection.AuthConnection.authUser
 import com.example.matchball.signin.google.GoogleSignInActivity
 import com.example.matchball.usersetting.account.UserAccountActivity
 import com.example.matchball.usersetting.userinfo.UserInfoActivity
-import com.example.matchball.yourmatchrequest.list.YourRequestActivity
 
 class UserFragment : Fragment() {
 
@@ -30,13 +29,12 @@ class UserFragment : Fragment() {
         initObserve()
         initEvent()
         userFragmentViewModel.handleReadUser()
-
     }
 
     private fun initEvent() {
         signOut()
         goUserInfoActivity()
-        goYourRequestActivity()
+//        goYourRequestActivity()
         goUserAccount()
         goSetting()
     }
@@ -106,12 +104,12 @@ class UserFragment : Fragment() {
         }
     }
 
-    private fun goYourRequestActivity() {
-        userFragmentBinding.requestsManager.setOnClickListener {
-            val intent = Intent(requireContext(), YourRequestActivity::class.java)
-            startActivity(intent)
-        }
-    }
+//    private fun goYourRequestActivity() {
+//        userFragmentBinding.requestsManager.setOnClickListener {
+//            val intent = Intent(requireContext(), YourRequestActivity::class.java)
+//            startActivity(intent)
+//        }
+//    }
 
     private fun signOut() {
         userFragmentBinding.signOut.setOnClickListener {

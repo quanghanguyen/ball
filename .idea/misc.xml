@@ -60,9 +60,11 @@
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_change_password.xml" value="0.21481481481481482" />
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_chat_list.xml" value="0.2" />
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_confirm.xml" value="0.2" />
+        <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_edit_maps.xml" value="0.25416666666666665" />
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_intro.xml" value="0.2" />
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_join.xml" value="0.2" />
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_maps_pitch.xml" value="0.20925925925925926" />
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_notification.xml" value="0.2" />
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_phone_sign_in.xml" value="0.2" />
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_phone_verify.xml" value="0.1" />
@@ -72,10 +74,12 @@
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_user_account.xml" value="0.264" />
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_user_info.xml" value="0.176" />
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_your_request.xml" value="0.25416666666666665" />
-        <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_your_request_details.xml" value="0.2" />
+        <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_your_request2.xml" value="0.25416666666666665" />
+        <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/activity_your_request_details.xml" value="0.1" />
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/fragment_all.xml" value="0.25416666666666665" />
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/fragment_done.xml" value="0.24010416666666667" />
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/fragment_list.xml" value="0.1" />
+        <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/fragment_maps.xml" value="0.24010416666666667" />
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/fragment_my_matches.xml" value="0.25416666666666665" />
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/fragment_my_request.xml" value="0.2" />
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/fragment_near_me.xml" value="0.25416666666666665" />
@@ -87,7 +91,7 @@
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/match_request_items.xml" value="0.25416666666666665" />
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/my_match_items.xml" value="0.2" />
         <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/layout/your_request_items.xml" value="0.25416666666666665" />
-        <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+        <entry key="..\:/learn_android/MatchBall-fix1/MatchBall/app/src/main/res/menu/bottom_nav_menu.xml" value="0.264" />
       </map>
     </option>
   </component>

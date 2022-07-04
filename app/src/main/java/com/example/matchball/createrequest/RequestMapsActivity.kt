@@ -102,6 +102,26 @@ import java.io.IOException
 
     override fun onLocationChanged(location: Location) {
 
+//        mLastLocation = location
+//        if (mCurrLocationMarker != null) {
+//            mCurrLocationMarker!!.remove()
+//        }
+//        //Place current location marker
+//        val latLng = LatLng(location.latitude, location.longitude)
+//        val markerOptions = MarkerOptions()
+//        markerOptions.position(latLng)
+//        markerOptions.title("Current Position")
+//        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+//        mCurrLocationMarker = mMap.addMarker(markerOptions)
+//
+//        //move map camera
+//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+//        mMap.animateCamera(CameraUpdateFactory.zoomTo(15f))
+//
+//        //stop location updates
+//        if (mGoogleApiClient != null) {
+//            LocationServices.getFusedLocationProviderClient(this)
+//        }
         mLastLocation = location
         if (mCurrLocationMarker != null) {
             mCurrLocationMarker!!.remove()
@@ -115,8 +135,8 @@ import java.io.IOException
         mCurrLocationMarker = mMap.addMarker(markerOptions)
 
         //move map camera
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(15f))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng))
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(21f))
 
         //stop location updates
         if (mGoogleApiClient != null) {

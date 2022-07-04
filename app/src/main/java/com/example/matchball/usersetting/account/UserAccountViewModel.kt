@@ -14,7 +14,6 @@ class UserAccountViewModel : ViewModel() {
 
     private val uid = AuthConnection.auth.currentUser!!.uid
     val loadData = MutableLiveData<UserData>()
-//    val verifyEmail = MutableLiveData<VerifyEmail>()
     val saveUserData = MutableLiveData<SaveUserData>()
 
     private var imgUri: Uri? = null

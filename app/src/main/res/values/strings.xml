@@ -145,6 +145,7 @@
     <string name="match_confirm">Match Confirm</string>
     <string name="confirm">Confirm</string>
     <string name="update">Update</string>
+    <string name="title_activity_your_request">YourRequestActivity</string>
 
 
 </resources>

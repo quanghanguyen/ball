@@ -19,6 +19,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MatchBall">
+
+        <!--
+             TODO: Before you run your application, you need a Google Maps API key.
+
+             To get one, follow the directions here:
+
+                https://developers.google.com/maps/documentation/android-sdk/get-api-key
+
+             Once you have your API key (it starts with "AIza"), define a new property in your
+             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
+             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyA399sl7RPCJIx0XE9RelAmUsxMp_CIzJc" />
+
+        <activity
+            android:name=".map.MapsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".mymatches.myrequest.details.YourRequestDetailsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_your_request" />
         <activity
             android:name=".confirm.ConfirmActivity"
             android:exported="false" />
@@ -48,17 +72,9 @@
             android:exported="false" />
         <activity
             android:name=".usersetting.account.UserAccountActivity"
-            android:exported="false" />
-        <activity
-            android:name=".yourmatchrequest.details.YourRequestDetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".yourmatchrequest.list.YourRequestActivity"
-            android:exported="false" /> <!-- <service -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
-
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".mymatches.myrequest.details.YourRequestDetailsActivity" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".joinmatch.JoinMapsActivity"
             android:exported="false"

@@ -33,8 +33,8 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun initObserve() {
-        signUpViewModel.signUpResult.observe(this, { result ->
-            signUpBinding.signUpSwipe.isRefreshing = false
+        signUpViewModel.signUpResult.observe(this) { result ->
+//            signUpBinding.signUpSwipe.isRefreshing = false
             when (result) {
                 is SignUpViewModel.SignUpResult.LoginOk -> {
                     Toast.makeText(this, result.message, Toast.LENGTH_SHORT).show()
@@ -45,15 +45,15 @@ class SignUpActivity : AppCompatActivity() {
                 is SignUpViewModel.SignUpResult.LoginError -> {
                     Toast.makeText(this, result.message, Toast.LENGTH_SHORT).show()
                 }
-                is SignUpViewModel.SignUpResult.Loading -> {
-                    signUpBinding.signUpSwipe.isRefreshing = true
-                }
+//                is SignUpViewModel.SignUpResult.Loading -> {
+//                    signUpBinding.signUpSwipe.isRefreshing = true
+//                }
             }
-        })
+        }
     }
 
     private fun signUpCheck() {
-        signUpBinding.btnSignUp.setOnClickListener{
+        signUpBinding.btnSignUp.setOnClickListener {
             val email: String = signUpBinding.emailEt.text.toString()
             val password: String = signUpBinding.passET.text.toString()
             val validEmail = signUpBinding.tvEmailSignUp.helperText == null
@@ -154,6 +154,4 @@ class SignUpActivity : AppCompatActivity() {
         }
         return null
     }
-
-
 }

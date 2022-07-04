@@ -13,7 +13,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.matchball.R
-import com.example.matchball.yourmatchrequest.details.YourRequestDetailsActivity
+import com.example.matchball.mymatches.myrequest.details.YourRequestDetailsActivity
 import com.example.matchball.databinding.ActivityEditMapsBinding
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
@@ -52,7 +52,6 @@ class ShowRequestMapActivity : AppCompatActivity(), OnMapReadyCallback, Location
         mapFragment.getMapAsync(this)
 
         searchButtonClick()
-
         doneButtonClick()
 
     }
@@ -77,11 +76,18 @@ class ShowRequestMapActivity : AppCompatActivity(), OnMapReadyCallback, Location
                 if (location.isEmpty() || address.latitude.toString().isBlank() || address.longitude.toString().isBlank()) {
                     Toast.makeText(applicationContext, "Location is Invalid", Toast.LENGTH_SHORT).show()
                 } else {
-                    val intent = Intent(this, YourRequestDetailsActivity::class.java)
+//                    val intent = Intent(this, YourRequestDetailsActivity::class.java)
+//                    intent.putExtra("location", location)
+//                    intent.putExtra("latitude", address.latitude.toString())
+//                    intent.putExtra("longitude", address.longitude.toString())
+//                    startActivity(intent)
+//                    finish()
+
+                    val intent = Intent()
                     intent.putExtra("location", location)
                     intent.putExtra("latitude", address.latitude.toString())
                     intent.putExtra("longitude", address.longitude.toString())
-                    startActivity(intent)
+                    setResult(RESULT_OK, intent)
                     finish()
                 }
             }
@@ -108,9 +114,6 @@ class ShowRequestMapActivity : AppCompatActivity(), OnMapReadyCallback, Location
                 val latLng = LatLng(address.latitude, address.longitude)
                 mMap.addMarker(MarkerOptions().position(latLng).title(location))
                 mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
-
-//                Toast.makeText(applicationContext, address.latitude.toString() + " " + address.longitude, Toast.LENGTH_LONG).show()
-
             }
         }
     }

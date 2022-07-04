@@ -14,7 +14,4 @@ class PhoneSignInViewModel : ViewModel() {
     sealed class PhoneSignInResult{
         class SignInOk()
     }
-
-
-
 }
