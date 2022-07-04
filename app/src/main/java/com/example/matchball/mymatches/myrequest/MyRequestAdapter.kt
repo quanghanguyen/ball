@@ -3,9 +3,7 @@ package com.example.matchball.mymatches.myrequest
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.matchball.databinding.FragmentMyRequestBinding
 import com.example.matchball.databinding.YourRequestItemsBinding
-import com.example.matchball.homedashboard.matchlist.RecyclerAdapter
 import com.example.matchball.model.MatchRequest
 
 class MyRequestAdapter(private var myRequestList : ArrayList<MatchRequest>)

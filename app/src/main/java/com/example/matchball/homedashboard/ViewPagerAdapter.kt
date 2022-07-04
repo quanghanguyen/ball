@@ -7,7 +7,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.matchball.homedashboard.all.AllFragment
 import com.example.matchball.homedashboard.nearme.NearMeFragment
 import com.example.matchball.homedashboard.newest.NewestFragment
-import com.example.matchball.homedashboard.oldest.OldestFragment
+import com.example.matchball.homedashboard.today.TodayFragment
 
 class ViewPagerAdapter(fm: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fm, lifecycle) {
     override fun getItemCount(): Int {
@@ -20,13 +20,13 @@ class ViewPagerAdapter(fm: FragmentManager, lifecycle: Lifecycle) : FragmentStat
                 AllFragment()
             }
             1 -> {
-                NearMeFragment()
+                TodayFragment()
             }
             2 -> {
-                NewestFragment()
+                NearMeFragment()
             }
             3 -> {
-                OldestFragment()
+                NewestFragment()
             }
             else -> {
                 Fragment()

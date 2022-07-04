@@ -146,6 +146,9 @@
     <string name="confirm">Confirm</string>
     <string name="update">Update</string>
     <string name="title_activity_your_request">YourRequestActivity</string>
+    <string name="today">Hôm nay</string>
+    <string name="near_me">Gần tôi</string>
+    <string name="newest">Mới nhất</string>
 
 
 </resources>

@@ -1,4 +1,4 @@
-package com.example.matchball.homedashboard.all
+package com.example.matchball.homedashboard.today
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,19 +8,18 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.matchball.databinding.FragmentAllBinding
+import com.example.matchball.databinding.FragmentTodayBinding
 import com.example.matchball.homedashboard.matchlist.MatchListViewModel
 import com.example.matchball.homedashboard.matchlist.RecyclerAdapter
 import com.example.matchball.joinmatch.JoinActivity
 import com.example.matchball.model.MatchRequest
 
-class AllFragment : Fragment() {
+class TodayFragment : Fragment() {
 
-    private lateinit var fragmentAllBinding: FragmentAllBinding
+    private lateinit var fragmentTodayBinding: FragmentTodayBinding
     private lateinit var matchRequestAdapter: RecyclerAdapter
-    private val matchListViewModel: MatchListViewModel by viewModels()
-    private var matchList = ArrayList<MatchRequest>()
-
+    private val todayListViewModel: TodayViewModel by viewModels()
+    private var todayList = ArrayList<MatchRequest>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -28,15 +27,11 @@ class AllFragment : Fragment() {
         initList()
         initObserve()
         initEvents()
-        matchListViewModel.handleMatchList()
-    }
-
-    private fun initEvents() {
-        refresh()
+        todayListViewModel.handleTodayList()
     }
 
     private fun initList() {
-        fragmentAllBinding.rcvMatchRequest.apply {
+        fragmentTodayBinding.rcvMatchRequest.apply {
             layoutManager = LinearLayoutManager(context)
             matchRequestAdapter = RecyclerAdapter(arrayListOf())
             adapter = matchRequestAdapter
@@ -50,26 +45,30 @@ class AllFragment : Fragment() {
     }
 
     private fun initObserve() {
-        matchListViewModel.matchListResult.observe(viewLifecycleOwner) { result ->
-            fragmentAllBinding.swipe.isRefreshing = false
+        todayListViewModel.todayListResult.observe(viewLifecycleOwner) { result ->
+            fragmentTodayBinding.swipe.isRefreshing = false
             when (result) {
-                is MatchListViewModel.MatchListResult.Loading -> {
-                    fragmentAllBinding.swipe.isRefreshing = true
+                is TodayViewModel.TodayListResult.Loading -> {
+                    fragmentTodayBinding.swipe.isRefreshing = true
                 }
-                is MatchListViewModel.MatchListResult.ResultOk -> {
-                    matchRequestAdapter.addNewData(result.matchList)
-                    matchList = result.matchList
+                is TodayViewModel.TodayListResult.ResultOk -> {
+                    matchRequestAdapter.addNewData(result.todayList)
+                    todayList = result.todayList
                 }
-                is MatchListViewModel.MatchListResult.ResultError -> {
+                is TodayViewModel.TodayListResult.ResultError -> {
                     Toast.makeText(context, result.errorMessage, Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
 
+    private fun initEvents() {
+        refresh()
+    }
+
     private fun refresh() {
-        fragmentAllBinding.swipe.setOnRefreshListener {
-            matchListViewModel.handleMatchList()
+        fragmentTodayBinding.swipe.setOnRefreshListener {
+            todayListViewModel.handleTodayList()
         }
     }
 
@@ -77,7 +76,7 @@ class AllFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        fragmentAllBinding = FragmentAllBinding.inflate(inflater, container, false)
-        return fragmentAllBinding.root
+        fragmentTodayBinding = FragmentTodayBinding.inflate(inflater, container, false)
+        return fragmentTodayBinding.root
     }
 }

@@ -16,6 +16,9 @@ import com.example.matchball.chat.BaseApplication
 import com.example.matchball.home.MainActivity
 import com.example.matchball.databinding.ActivityRequestBinding
 import com.example.matchball.firebaseconnection.DatabaseConnection
+import com.google.android.material.timepicker.TimeFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class RequestActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
@@ -170,6 +173,14 @@ class RequestActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
     override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
         requestViewModel.myHour = hourOfDay
         requestViewModel.myMinute = minute
-        requestBinding.timeEt.setText("${requestViewModel.myHour}:${requestViewModel.myMinute} (${requestViewModel.myDay}/${requestViewModel.myMonth}/${requestViewModel.myYear})")
+
+        val time = "${requestViewModel.myHour}:${requestViewModel.myMinute}"
+        val date = "${requestViewModel.myDay}-${requestViewModel.myMonth}-${requestViewModel.myYear}"
+
+//        val current = LocalDateTime.now()
+//        val dateformatter = DateTimeFormatter.ofPattern("d-M-yyyy")
+//        val formattedDate = current.format(dateformatter)
+
+        requestBinding.timeEt.setText("$time ($date)")
     }
 }

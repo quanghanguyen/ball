@@ -10,6 +10,8 @@ data class MatchRequest (
     val id: String? = "",
     @SerializedName("teamName")
     val teamName : String? = "",
+//    @SerializedName("date")
+//    val date : String? = "",
     @SerializedName("time")
     val time : String? = "",
     @SerializedName("pitch")
@@ -19,7 +21,7 @@ data class MatchRequest (
     @SerializedName("pitchLongitude")
     val pitchLongitude : String? = "",
     @SerializedName("people")
-    val people : String? = "",
+    var people : String? = "",
     @SerializedName("note")
     val note : String? = "",
     @SerializedName("phone")

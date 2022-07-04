@@ -70,9 +70,6 @@ class RecyclerAdapter(private var requestList : ArrayList<MatchRequest>):
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(requestList[position])
-
-//        val requestHolder = holder as MyViewHolder
-//        requestHolder.bind(requestList[position])
     }
 
     override fun getItemCount(): Int {

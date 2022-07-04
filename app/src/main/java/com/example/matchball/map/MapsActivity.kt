@@ -31,8 +31,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsPitchBinding
-    private lateinit var mFusedLocationClient: FusedLocationProviderClient
-    private val permissionId = 2
     var latitude : Double? = null
     var longitude : Double? = null
 
@@ -45,93 +43,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
-
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        getLocation()
     }
 
-    @SuppressLint("MissingPermission", "SetTextI18n")
-    private fun getLocation() {
-        if (checkPermissions()) {
-            if (isLocationEnabled()) {
-                mFusedLocationClient.lastLocation.addOnCompleteListener(this) { task ->
-                    val location: Location? = task.result
-                    if (location != null) {
-                        val geocoder = Geocoder(this, Locale.getDefault())
-                        val list: List<Address> =
-                            geocoder.getFromLocation(location.latitude, location.longitude, 1)
-//                        mainBinding.apply {
-//                            tvLatitude.text = "Latitude\n${list[0].latitude}"
-//                            tvLongitude.text = "Longitude\n${list[0].longitude}"
-//                            tvCountryName.text = "Country Name\n${list[0].countryName}"
-//                            tvLocality.text = "Locality\n${list[0].locality}"
-//                            tvAddress.text = "Address\n${list[0].getAddressLine(0)}"
-//                        }
-                        latitude = list[0].latitude
-                        longitude = list[0].longitude
-                    }
-                }
-            } else {
-                Toast.makeText(this, "Please turn on location", Toast.LENGTH_LONG).show()
-                val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
-                startActivity(intent)
-            }
-        } else {
-            requestPermissions()
-        }
-    }
-
-    private fun isLocationEnabled(): Boolean {
-        val locationManager: LocationManager =
-            getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
-                || locationManager.isProviderEnabled (
-            LocationManager.NETWORK_PROVIDER
-        )
-    }
-
-    private fun checkPermissions(): Boolean {
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED &&
-            ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            return true
-        }
-        return false
-    }
-
-    private fun requestPermissions() {
-        ActivityCompat.requestPermissions(
-            this,
-            arrayOf(
-                Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ),
-            permissionId
-        )
-    }
-
-    @SuppressLint("MissingSuperCall")
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray
-    ) {
-        if (requestCode == permissionId) {
-            if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                getLocation()
-            }
-        }
+    fun setLocation(currentLatitude : Double, currentLongitude : Double) {
+        latitude = currentLatitude
+        longitude = currentLongitude
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        val currentLocation = LatLng(16.458, 107.5921)
+        val currentLocation = LatLng(16.461109, 107.570183)
         mMap.addMarker(MarkerOptions().position(currentLocation).title("Your Location"))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 15f))
     }

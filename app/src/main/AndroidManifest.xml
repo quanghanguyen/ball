@@ -72,9 +72,7 @@
             android:exported="false" />
         <activity
             android:name=".usersetting.account.UserAccountActivity"
-            android:exported="false" /> <!-- <activity -->
-        <!-- android:name=".mymatches.myrequest.details.YourRequestDetailsActivity" -->
-        <!-- android:exported="false" /> -->
+            android:exported="false" />
         <activity
             android:name=".joinmatch.JoinMapsActivity"
             android:exported="false"
@@ -121,7 +119,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
