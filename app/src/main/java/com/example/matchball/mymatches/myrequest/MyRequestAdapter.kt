@@ -39,7 +39,7 @@ class MyRequestAdapter(private var myRequestList : ArrayList<MatchRequest>)
         fun bind(data : MatchRequest) {
             with(yourRequestItemsBinding) {
                 tvTime.text = data.time
-                tvAmount.text = data.people
+                tvAmount.text = data.people.toString()
                 tvPitch.text = data.pitch
 
                 yourRequestItemsBinding.items.setOnClickListener {

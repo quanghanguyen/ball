@@ -222,7 +222,7 @@ class YourRequestDetailsActivity : AppCompatActivity(), DatePickerDialog.OnDateS
                 timeEt.setText(matchData?.time)
                 pitchEt.setText(matchData?.pitch)
                 noteEt.setText(matchData?.note)
-                peopleSelect.setText(matchData?.people)
+                matchData?.people?.let { peopleSelect.setText(it) }
                 if (matchData != null) {
                     latitude = matchData.pitchLatitude
                 }

@@ -119,7 +119,7 @@ class RequestActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
                     } else {
                         val id = DatabaseConnection.databaseReference.getReference("MatchRequest").push().key
                         val matchTime = requestBinding.timeEt.text.toString()
-                        val matchPeople = requestBinding.peopleSelect.text.toString()
+                        val matchPeople = requestBinding.peopleSelect.text.toString().toInt()
                         val matchNote = requestBinding.noteEt.text.toString()
 
                         teamName?.let { it1 ->

@@ -51,7 +51,7 @@ class RecyclerAdapter(private var requestList : ArrayList<MatchRequest>):
                 tvTeamName.text = requestData.teamName
                 tvTime.text = requestData.time
                 tvPitch.text = requestData.pitch
-                tvAmount.text = requestData.people
+                tvAmount.text = requestData.people.toString()
                 tvPhone.text = requestData.phone
 
                 requestItemsBinding.rlRequestItems.setOnClickListener {

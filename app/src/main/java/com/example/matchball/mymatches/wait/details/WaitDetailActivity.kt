@@ -59,7 +59,7 @@ class WaitDetailActivity : AppCompatActivity() {
                 tvJMPitch.text = requests.pitch
                 tvJMNote.text = requests.note
                 tvJMPhone.text = requests.phone
-                tvJMPeople.text = requests.people
+                tvJMPeople.text = requests.people.toString()
             }
         }
     }

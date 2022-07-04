@@ -21,7 +21,7 @@ data class MatchRequest (
     @SerializedName("pitchLongitude")
     val pitchLongitude : String? = "",
     @SerializedName("people")
-    var people : String? = "",
+    var people : Int = 0,
     @SerializedName("note")
     val note : String? = "",
     @SerializedName("phone")

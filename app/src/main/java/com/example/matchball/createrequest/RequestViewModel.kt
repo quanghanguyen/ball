@@ -48,7 +48,7 @@ class RequestViewModel : ViewModel() {
     }
 
     fun handleSendRequest(id : String, teamNameReceived : String, matchTime : String, locationReceived: String?,
-                          latitudeReceived: String?, longitudeReceived : String?, matchPeople: String?,
+                          latitudeReceived: String?, longitudeReceived : String?, matchPeople: Int,
                           matchNote : String, teamPhoneReceived : String) {
 
         val matchRequest = MatchRequest(id, teamNameReceived, matchTime, locationReceived, latitudeReceived, longitudeReceived,

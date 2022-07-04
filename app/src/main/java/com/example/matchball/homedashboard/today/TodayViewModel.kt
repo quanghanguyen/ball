@@ -27,13 +27,22 @@ class TodayViewModel : ViewModel() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     val listToday = ArrayList<MatchRequest>()
+
                     for (requestSnapshot in snapshot.children) {
                         requestSnapshot.getValue(MatchRequest::class.java)?.let {
-                            it.people = "10"
-                            listToday.add(0, it)
+//                            it.people = "10"
+                            listToday.let { data ->
+                                val filterData = data.filter { value ->
+                                    value.people == 10
+                                }
+                                listToday.add(0, it)
+                                todayListResult.postValue(TodayListResult.ResultOk(filterData as ArrayList<MatchRequest>))
+                            }
+//                            listToday.add(0, it)
+//                            todayListResult.postValue(TodayListResult.ResultOk(listToday))
                         }
                     }
-                    todayListResult.postValue(TodayListResult.ResultOk(listToday))
+//                    todayListResult.postValue(TodayListResult.ResultOk(listToday))
                 }
             }
             override fun onCancelled(error: DatabaseError) {

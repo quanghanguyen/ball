@@ -41,7 +41,7 @@ class MyMatchListAdapter(private var myMatchList : ArrayList<MatchRequest>)
                 tvTeamName.text = data.teamName
                 tvPitch.text = data.pitch
                 tvTime.text = data.time
-                tvAmount.text = data.people
+                tvAmount.text = data.people.toString()
                 tvPhone.text = data.phone
 
                 myMatchItemsBinding.items.setOnClickListener{
