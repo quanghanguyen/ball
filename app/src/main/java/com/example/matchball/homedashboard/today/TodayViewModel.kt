@@ -28,9 +28,11 @@ class TodayViewModel : ViewModel() {
                 if (snapshot.exists()) {
                     val listToday = ArrayList<MatchRequest>()
                     for (requestSnapshot in snapshot.children) {
-                        requestSnapshot.getValue(MatchRequest::class.java)?.let {
-                            it.people = "10"
-                            listToday.add(0, it)
+                        requestSnapshot.getValue(MatchRequest::class.java)?.let {list ->
+                            val filter = list.people
+                            if (filter == "10") {
+                                listToday.add(0, list)
+                            }
                         }
                     }
                     todayListResult.postValue(TodayListResult.ResultOk(listToday))

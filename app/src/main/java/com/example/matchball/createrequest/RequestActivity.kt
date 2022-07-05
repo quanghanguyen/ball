@@ -104,7 +104,7 @@ class RequestActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
-                var locationReceived = data?.getStringExtra("location")
+                val locationReceived = data?.getStringExtra("location")
                 val latitudeReceived = data?.getStringExtra("latitude")
                 val longitudeReceived = data?.getStringExtra("longitude")
                 requestBinding.pitchEt.setText((locationReceived))
