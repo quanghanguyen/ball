@@ -1,5 +1,7 @@
 package com.example.matchball.homedashboard.matchlist
 
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.matchball.firebaseconnection.DatabaseConnection
@@ -8,6 +10,12 @@ import com.example.matchball.model.MatchRequest
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MatchListViewModel : ViewModel() {
 
@@ -26,8 +34,22 @@ class MatchListViewModel : ViewModel() {
                 if (snapshot.exists()) {
                     val listMatch = ArrayList<MatchRequest>()
                     for (requestSnapshot in snapshot.children) {
-                        requestSnapshot.getValue(MatchRequest::class.java)?.let {
-                            listMatch.add(0, it)
+                        requestSnapshot.getValue(MatchRequest::class.java)?.let {list ->
+                            val current = LocalDate.now()
+                            val matchTime = list.date
+
+                            val formatter = DateTimeFormatter.ofPattern("d/M/yyyy", Locale.ENGLISH)
+
+                            val date = LocalDate.parse(matchTime, formatter)
+
+                            when {
+                                date >= current -> {
+                                    listMatch.add(0, list)
+                                }
+                                else -> {
+                                    Log.e("Thong bao", "Failed")
+                                }
+                            }
                         }
                     }
                     matchListResult.postValue(MatchListResult.ResultOk(listMatch))

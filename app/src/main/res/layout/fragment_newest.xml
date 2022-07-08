@@ -6,13 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".homedashboard.newest.NewestFragment">
 
-    <TextView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/newest"
-        android:layout_centerInParent="true"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        />
+        android:layout_marginTop="8dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvMatchRequest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
 </RelativeLayout>

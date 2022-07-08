@@ -11,7 +11,6 @@ object StorageConnection {
 
     fun handleAvatar(blala : String? = null , uid:String, localFile:File, onSuccess:(Bitmap) -> Unit, onFail:(Exception) -> Unit)
     {
-
         storageReference.getReference("Users").child(uid).getFile(localFile)
             .addOnSuccessListener {
                 val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)

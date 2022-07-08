@@ -47,11 +47,11 @@ class RequestViewModel : ViewModel() {
         }
     }
 
-    fun handleSendRequest(id : String, teamNameReceived : String, matchTime : String, locationReceived: String?,
+    fun handleSendRequest(id : String, teamNameReceived : String, matchDay: String, matchTime : String, locationReceived: String?,
                           latitudeReceived: String?, longitudeReceived : String?, matchPeople: String?,
                           matchNote : String, teamPhoneReceived : String) {
 
-        val matchRequest = MatchRequest(id, teamNameReceived, matchTime, locationReceived, latitudeReceived, longitudeReceived,
+        val matchRequest = MatchRequest(id, teamNameReceived, matchDay, matchTime, locationReceived, latitudeReceived, longitudeReceived,
             matchPeople, matchNote, teamPhoneReceived)
 
         DatabaseConnection.databaseReference.getReference("MatchRequest").child(id).setValue(matchRequest).addOnCompleteListener {

@@ -24,15 +24,15 @@ class MatchListFragment : Fragment() {
         initEvent()
 
         //search
-        listFragmentBinding.searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
-            }
-            override fun onQueryTextChange(newText: String?): Boolean {
-                matchRequestAdapter.filter.filter(newText)
-                return false
-            }
-        })
+//        listFragmentBinding.searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                return false
+//            }
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                matchRequestAdapter.filter.filter(newText)
+//                return false
+//            }
+//        })
     }
 
     private fun initViewPager() {

@@ -69,6 +69,11 @@ class YourRequestDetailsViewModel : ViewModel() {
         DatabaseConnection.databaseReference.getReference("MatchRequest")
             .child(id)
             .updateChildren(user)
+
+        DatabaseConnection.databaseReference.getReference("Your_Match")
+            .child(uid)
+            .child(id)
+            .updateChildren(user)
     }
 
     fun handleDeleteData(id : String) {

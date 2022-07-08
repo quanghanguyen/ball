@@ -16,14 +16,14 @@ class JoinViewModel : ViewModel() {
         class ResultError(val errorMessage : String) : SaveResultResult()
     }
 
-    fun handleSaveRequest(teamNameReceived : String, matchTime : String, locationReceived: String?,
+    fun handleSaveRequest(id: String, teamNameReceived : String, matchDate: String, matchTime : String, locationReceived: String?,
                           latitudeReceived: String?, longitudeReceived : String?, matchPeople: String?,
                           matchNote : String, teamPhoneReceived : String) {
 
-        val data = MatchRequest(teamNameReceived, matchTime, locationReceived, latitudeReceived, longitudeReceived,
+        val data = MatchRequest(id, teamNameReceived, matchDate, matchTime, locationReceived, latitudeReceived, longitudeReceived,
             matchPeople, matchNote, teamPhoneReceived)
 
-        DatabaseConnection.databaseReference.getReference("Your_Match").child(uid).push().setValue(data).addOnCompleteListener {
+        DatabaseConnection.databaseReference.getReference("Your_Match").child(uid).child(id).setValue(data).addOnCompleteListener {
             if (it.isSuccessful) {
                 saveRequest.postValue(SaveResultResult.ResultOk("Success"))
             } else {

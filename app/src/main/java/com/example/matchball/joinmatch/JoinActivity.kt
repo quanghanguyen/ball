@@ -11,7 +11,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.matchball.databinding.ActivityJoinBinding
+import com.example.matchball.firebaseconnection.AuthConnection
 import com.example.matchball.firebaseconnection.AuthConnection.authUser
+import com.example.matchball.firebaseconnection.DatabaseConnection
 import com.example.matchball.home.MainActivity
 import com.example.matchball.model.MatchRequest
 
@@ -19,6 +21,7 @@ class JoinActivity : AppCompatActivity() {
 
     private lateinit var joinBinding: ActivityJoinBinding
     private val joinViewModel : JoinViewModel by viewModels()
+    private val uid = AuthConnection.auth.currentUser!!.uid
 
     companion object
     {
@@ -108,16 +111,19 @@ class JoinActivity : AppCompatActivity() {
         joinBinding.btnJoin.setOnClickListener {
             intent?.let { bundle ->
                 val requests = bundle.getParcelableExtra<MatchRequest>(KEY_DATA)
+
+                val id = DatabaseConnection.databaseReference.getReference("Your_Match").child(uid).push().key
                 val pitchLatitude = requests?.pitchLatitude
                 val pitchLongitude = requests?.pitchLongitude
                 val teamName = joinBinding.tvJMTeamName.text.toString()
+                val date = "06/07/2022"
                 val time = joinBinding.tvJMTime.text.toString()
                 val location = joinBinding.tvJMPitch.text.toString()
                 val people = joinBinding.tvJMPeople.text.toString()
                 val note = joinBinding.tvJMNote.text.toString()
                 val phone = joinBinding.tvJMPhone.text.toString()
 
-                joinViewModel.handleSaveRequest(teamName, time, location, pitchLatitude, pitchLongitude, people, note, phone)
+                joinViewModel.handleSaveRequest(id!!, teamName, date, time, location, pitchLatitude, pitchLongitude, people, note, phone)
             }
         }
     }

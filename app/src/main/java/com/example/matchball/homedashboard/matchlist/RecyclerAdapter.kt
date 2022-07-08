@@ -48,8 +48,10 @@ class RecyclerAdapter(private var requestList : ArrayList<MatchRequest>):
     ) : RecyclerView.ViewHolder(requestItemsBinding.root) {
         fun bind(requestData: MatchRequest) {
             with(requestItemsBinding) {
+                val time = requestData.time
+                val date = requestData.date
                 tvTeamName.text = requestData.teamName
-                tvTime.text = requestData.time
+                tvTime.text = "$time ($date)"
                 tvPitch.text = requestData.pitch
                 tvAmount.text = requestData.people
                 tvPhone.text = requestData.phone
@@ -64,8 +66,7 @@ class RecyclerAdapter(private var requestList : ArrayList<MatchRequest>):
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val matchRequestItems =
             MatchRequestItemsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        val viewHolder = MyViewHolder(matchRequestItems, listerner)
-        return viewHolder
+        return MyViewHolder(matchRequestItems, listerner)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
